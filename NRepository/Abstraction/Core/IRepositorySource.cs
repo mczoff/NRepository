@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NRepository.Abstraction
+namespace NRepository.Abstraction.Core
 {
-    public interface IUpdateRepository<TModel, TKey>
+    public interface IRepositorySource<TModel>
     {
-        void Update(TModel model, TKey key);
     }
 }

@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{41A827EE-F02C-4FA4-B402-052CC9ED0BF5}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NRepository</RootNamespace>
-    <AssemblyName>NRepository</AssemblyName>
+    <ProjectGuid>{111F188B-9292-43E2-97F4-108090C04714}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>NRepository.Samples.Collections</RootNamespace>
+    <AssemblyName>NRepository.Samples.Collections</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,26 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstraction\Core\IRepositoryClassBuilder.cs" />
-    <Compile Include="Abstraction\Core\IRepositorySource.cs" />
-    <Compile Include="Abstraction\ICountAsyncRepository.cs" />
-    <Compile Include="Abstraction\ICountRepository.cs" />
-    <Compile Include="Abstraction\ICreateAsyncRepository.cs" />
-    <Compile Include="Abstraction\ICreateRepository.cs" />
-    <Compile Include="Abstraction\IDeleteAsyncRepository.cs" />
-    <Compile Include="Abstraction\IDeleteRepository.cs" />
-    <Compile Include="Abstraction\ISelectAsyncRepository.cs" />
-    <Compile Include="Abstraction\ISelectRepository.cs" />
-    <Compile Include="Abstraction\IUpdateAsyncRepository.cs" />
-    <Compile Include="Abstraction\IUpdateRepository.cs" />
-    <Compile Include="Abstraction\TestInterface.cs" />
-    <Compile Include="Core\EnumerableRepositorySource.cs" />
-    <Compile Include="Core\EnumerableRepositoryClassBuilder.cs" />
-    <Compile Include="Core\RepositoryClassBuilder.cs" />
-    <Compile Include="Factories\RepositoryFactory.cs" />
-    <Compile Include="IRepositoryBuilder.cs" />
+    <Compile Include="Models\Car.cs" />
+    <Compile Include="Repositories\ICarRepository.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoryBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\NRepository\NRepository.csproj">
+      <Project>{41a827ee-f02c-4fa4-b402-052cc9ed0bf5}</Project>
+      <Name>NRepository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

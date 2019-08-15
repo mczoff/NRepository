@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace NRepository.Abstraction
 {
-    public interface IUpdateRepository<TModel, TKey>
+    public interface Test
     {
-        void Update(TModel model, TKey key);
+        void SayHello(string ss);
     }
 }
