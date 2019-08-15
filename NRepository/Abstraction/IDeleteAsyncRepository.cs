@@ -8,6 +8,6 @@ namespace NRepository.Abstraction
 {
     public interface IDeleteAsyncRepository<TKey>
     {
-        Task Delete(TKey key)
+        Task Delete(TKey key);
     }
 }
