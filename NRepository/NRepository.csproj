@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstraction\Core\IRepositoryClassBuilder.cs" />
+    <Compile Include="Abstraction\Core\IRepositoryProvider.cs" />
     <Compile Include="Abstraction\Core\IRepositorySource.cs" />
     <Compile Include="Abstraction\ICountAsyncRepository.cs" />
     <Compile Include="Abstraction\ICountRepository.cs" />
@@ -54,13 +55,31 @@
     <Compile Include="Abstraction\IUpdateAsyncRepository.cs" />
     <Compile Include="Abstraction\IUpdateRepository.cs" />
     <Compile Include="Abstraction\TestInterface.cs" />
+    <Compile Include="Attributes\RepositoryIdAttribute.cs" />
     <Compile Include="Core\EnumerableRepositorySource.cs" />
     <Compile Include="Core\EnumerableRepositoryClassBuilder.cs" />
+    <Compile Include="Core\EnumerableRepositoryProvider.cs" />
     <Compile Include="Core\RepositoryClassBuilder.cs" />
     <Compile Include="Factories\RepositoryFactory.cs" />
     <Compile Include="IRepositoryBuilder.cs" />
+    <Compile Include="Params\EnumerableRepositoryTemplateParams.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryBuilder.cs" />
+    <Compile Include="Service\RepositoryInterfaceStringService.cs" />
+    <Compile Include="Templates\EnumerableRepositoryTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EnumerableRepositoryTemplate.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\EnumerableRepositoryTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EnumerableRepositoryTemplate.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -10,11 +10,11 @@ namespace NRepository.Core
     public class EnumerableRepositorySource<TModel>
         : IRepositorySource<TModel>
     {
-        private IEnumerable<TModel> _enumerable;
+        public IEnumerable<TModel> Enumerable { get; }
 
         public EnumerableRepositorySource(IEnumerable<TModel> enumerable)
         {
-            _enumerable = enumerable;
+            Enumerable = enumerable;
         }
     }
 }

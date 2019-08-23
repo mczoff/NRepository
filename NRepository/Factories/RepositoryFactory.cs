@@ -14,7 +14,7 @@ namespace NRepository.Factories
         {
             RepositoryClassBuilder repositoryClassBuilder = new EnumerableRepositoryClassBuilder();
 
-            return repositoryClassBuilder.CreateRepositoryInstance<TRepository>();
+            return repositoryClassBuilder.CreateRepositoryInstance<TRepository>(repositorySource);
         }
     }
 }

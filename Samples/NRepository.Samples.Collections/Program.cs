@@ -16,7 +16,7 @@ namespace NRepository.Samples.Collections
             Car[] cars = new[]
             {
                 new Car { Id = 0, Name = "BMW" },
-                new Car { Id = 2, Name = "Honda" },
+                new Car { Id = 1, Name = "Honda" },
                 new Car { Id = 2, Name = "Chevrolet" }
             };
 
@@ -27,6 +27,9 @@ namespace NRepository.Samples.Collections
                 .Build<ICarRepository>();
 
             var selectedCar = repository.Select(0);
+
+            if (selectedCar != null)
+                Console.WriteLine($"Selected car [{selectedCar.Id}] - {selectedCar.Name} ");
         }
     }
 }
