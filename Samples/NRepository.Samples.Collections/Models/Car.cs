@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NRepository.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,9 @@ namespace NRepository.Samples.Collections.Models
 {
     public class Car
     {
+        [RepositoryId]
         public int Id { get; set; }
+
         public string Name { get; set; }
     }
 }

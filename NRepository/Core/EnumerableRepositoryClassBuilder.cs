@@ -1,45 +1,70 @@
 ﻿using System;
+using System.CodeDom.Compiler;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Dynamic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.CSharp;
+using NRepository.Abstraction.Core;
+using NRepository.Params;
+using NRepository.Templates;
 
 namespace NRepository.Core
 {
     public class EnumerableRepositoryClassBuilder
         : RepositoryClassBuilder
     {
-        public override TRepository CreateRepositoryInstance<TRepository>()
+        public EnumerableRepositoryClassBuilder()
         {
-            var repositoryInterfaces = typeof(TRepository).GetInterfaces();
+            RequiredAssemblies.Add("System.Core.dll");
+        }
 
-            var typeBuilder = CreateTypeBuilder();
+        public override TRepository CreateRepositoryInstance<TRepository>(object repositorySource)
+        {
+            //var repositoryInterfaces = typeof(TRepository).GetInterfaces();
 
-            typeBuilder.AddInterfaceImplementation(typeof(TRepository));
+            EnumerableRepositoryTemplate enumerableRepositoryTemplate = new EnumerableRepositoryTemplate();
 
-            foreach (var repositoryInterface in repositoryInterfaces)
+            var repositoryInterfaceType = typeof(TRepository);
+            var repositoryName = repositoryInterfaceType.Name.TrimStart('I', 'i');
+            var repositoryModel = repositorySource.GetType().GenericTypeArguments[0].FullName;
+
+            EnumerableRepositoryTemplateParams enumerableRepositoryTemplateParams = new EnumerableRepositoryTemplateParams
             {
-                foreach (var repositoryInterfaceMethod in repositoryInterface.GetMethods())
-                {
-                    MethodBuilder myMethodBuilder = typeBuilder.DefineMethod(
-                        repositoryInterfaceMethod.Name,
-                        MethodAttributes.Public | MethodAttributes.Virtual,
-                        repositoryInterfaceMethod.ReturnType,
-                        repositoryInterfaceMethod.GetParameters().Select(t => t.ParameterType).ToArray());
+                Name = repositoryName,
+                Interface = typeof(TRepository).Name,
+                FullNameModel = repositoryModel
+            };
 
-                    ILGenerator myMethodIL = myMethodBuilder.GetILGenerator();
+            enumerableRepositoryTemplate.Session = new Dictionary<string, object>
+            {
+                {  "Params", enumerableRepositoryTemplateParams }
+            };
 
-                    myMethodIL.Emit(OpCodes.Ldnull);
-                    myMethodIL.Emit(OpCodes.Ret);
+            enumerableRepositoryTemplate.Initialize();
+            string code = enumerableRepositoryTemplate.TransformText();
 
-                    typeBuilder.DefineMethodOverride(myMethodBuilder, repositoryInterfaceMethod);
-                }
-            }
+            CSharpCodeProvider compiler = new CSharpCodeProvider();
+            var compileParams = new CompilerParameters
+            {
+                GenerateInMemory = true,
+            };
 
-            var repository = typeBuilder.CreateType();
-            return (TRepository)Activator.CreateInstance(repository); ;
+            var entryAssembly = Assembly.GetEntryAssembly().Modules.First();
+
+            compileParams.ReferencedAssemblies.AddRange(RequiredAssemblies.Concat(new[] { entryAssembly.Name }).ToArray());
+
+            var result = compiler.CompileAssemblyFromSource(compileParams, code);
+
+            var repositoryType = Array.Find(result.CompiledAssembly.GetTypes(), t => t.Name == "CarRepository");
+
+            return (TRepository)Activator.CreateInstance(repositoryType, new object[] { repositorySource });
         }
     }
 }

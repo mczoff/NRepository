@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NRepository.Abstraction.Core;
+using NRepository.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -10,24 +12,13 @@ namespace NRepository.Core
 {
     public abstract class RepositoryClassBuilder
     {
-        public abstract TRepository CreateRepositoryInstance<TRepository>();
+        public List<string> RequiredAssemblies { get; set; }
 
-        public TypeBuilder CreateTypeBuilder()
+        protected RepositoryClassBuilder()
         {
-            var typeSignature = "DynamicRepository";
-            var assemblyName = new AssemblyName(typeSignature);
-
-            AssemblyBuilder assemblyBuilder = AppDomain.CurrentDomain.DefineDynamicAssembly(assemblyName, AssemblyBuilderAccess.Run);
-            ModuleBuilder moduleBuilder = assemblyBuilder.DefineDynamicModule("DynamicNRepositoryModule");
-
-            return moduleBuilder.DefineType(typeSignature,
-                    TypeAttributes.Public |
-                    TypeAttributes.Class |
-                    TypeAttributes.AutoClass |
-                    TypeAttributes.AnsiClass |
-                    TypeAttributes.BeforeFieldInit |
-                    TypeAttributes.AutoLayout,
-                    null);
+            RequiredAssemblies = new List<string> { "NRepository.dll" };
         }
+
+        public abstract TRepository CreateRepositoryInstance<TRepository>(object repositorySource);
     }
 }
