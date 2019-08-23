@@ -54,28 +54,29 @@
     <Compile Include="Abstraction\ISelectRepository.cs" />
     <Compile Include="Abstraction\IUpdateAsyncRepository.cs" />
     <Compile Include="Abstraction\IUpdateRepository.cs" />
-    <Compile Include="Abstraction\TestInterface.cs" />
+    <Compile Include="Attributes\RepositoryContractAttribute.cs" />
     <Compile Include="Attributes\RepositoryIdAttribute.cs" />
-    <Compile Include="Core\EnumerableRepositorySource.cs" />
-    <Compile Include="Core\EnumerableRepositoryClassBuilder.cs" />
-    <Compile Include="Core\EnumerableRepositoryProvider.cs" />
+    <Compile Include="Core\CollectionRepositorySource.cs" />
+    <Compile Include="Core\CollectionRepositoryClassBuilder.cs" />
+    <Compile Include="Core\CollectionRepositoryProvider.cs" />
     <Compile Include="Core\RepositoryClassBuilder.cs" />
     <Compile Include="Factories\RepositoryFactory.cs" />
     <Compile Include="IRepositoryBuilder.cs" />
-    <Compile Include="Params\EnumerableRepositoryTemplateParams.cs" />
+    <Compile Include="Params\CollectionRepositoryTemplateParams.cs" />
+    <Compile Include="Models\RepositoryContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryBuilder.cs" />
     <Compile Include="Service\RepositoryInterfaceStringService.cs" />
-    <Compile Include="Templates\EnumerableRepositoryTemplate.cs">
+    <Compile Include="Templates\CollectionRepositoryTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EnumerableRepositoryTemplate.tt</DependentUpon>
+      <DependentUpon>CollectionRepositoryTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Templates\EnumerableRepositoryTemplate.tt">
+    <Content Include="Templates\CollectionRepositoryTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>EnumerableRepositoryTemplate.cs</LastGenOutput>
+      <LastGenOutput>CollectionRepositoryTemplate.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

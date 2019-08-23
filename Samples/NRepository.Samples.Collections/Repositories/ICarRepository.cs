@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 namespace NRepository.Samples.Collections.Repositories
 {
     public interface ICarRepository
-        : ISelectRepository<Car, int>
+        : ISelectRepository<Car, int>,
+          IDeleteRepository<int>
     {
     }
 }

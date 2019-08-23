@@ -16,9 +16,9 @@ namespace NRepository.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\EnumerableRepositoryTemplate.tt"
+    #line 1 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class EnumerableRepositoryTemplate : EnumerableRepositoryTemplateBase
+    public partial class CollectionRepositoryTemplate : CollectionRepositoryTemplateBase
     {
 #line hidden
         /// <summary>
@@ -29,60 +29,133 @@ namespace NRepository.Templates
             this.Write("using System.Linq;\r\n\r\nnamespace NRepository.Samples.Collections.Repositories\r\n{\r\n" +
                     "\tpublic class ");
             
-            #line 9 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\EnumerableRepositoryTemplate.tt"
+            #line 9 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.Name));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 9 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\EnumerableRepositoryTemplate.tt"
+            #line 9 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.Interface));
             
             #line default
             #line hidden
             this.Write("\r\n\t{\r\n\t\tpublic ");
             
-            #line 11 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\EnumerableRepositoryTemplate.tt"
+            #line 11 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.Name));
             
             #line default
             #line hidden
-            this.Write("(NRepository.Core.EnumerableRepositorySource<");
+            this.Write("(NRepository.Core.CollectionRepositorySource<");
             
-            #line 11 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\EnumerableRepositoryTemplate.tt"
+            #line 11 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
             #line hidden
-            this.Write("> enumerableResositorySource)\r\n\t\t{\r\n\t\t\tEnumerableResositorySource = enumerableRes" +
-                    "ositorySource;\r\n\t\t}\r\n\r\n\t\tpublic NRepository.Core.EnumerableRepositorySource<");
+            this.Write("> repositorySource)\r\n\t\t{\r\n\t\t\tRepositorySource = repositorySource;\r\n\t\t}\r\n\r\n\t\tpubli" +
+                    "c NRepository.Core.CollectionRepositorySource<");
             
-            #line 16 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\EnumerableRepositoryTemplate.tt"
+            #line 16 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
             #line hidden
-            this.Write("> EnumerableResositorySource { get; private set; }\r\n\r\n\t\tpublic ");
+            this.Write("> RepositorySource { get; private set; }\r\n\r\n\t\t");
             
-            #line 18 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\EnumerableRepositoryTemplate.tt"
+            #line 18 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsSelect) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ");
+            
+            #line 19 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
             #line hidden
-            this.Write(" Select(int s)\r\n\t\t{\r\n\t\t\treturn Enumerable.FirstOrDefault(EnumerableResositorySour" +
-                    "ce.Enumerable, t => t.Id == s);\r\n\t\t}\r\n\t}\r\n}");
+            this.Write(" Select(int key)\r\n\t\t{\r\n\t\t\treturn Enumerable.FirstOrDefault(RepositorySource.Colle" +
+                    "ction, t => t.");
+            
+            #line 21 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" == key);\r\n\t\t}\r\n\t\t");
+            
+            #line 23 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 25 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsDelete) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic void Delete(int key)\r\n\t\t{\r\n\t\t\tvar item = Select(key);\r\n\r\n\t\t\tRepositorySo" +
+                    "urce.Collection.Remove(item);\r\n\t\t}\r\n\t\t");
+            
+            #line 32 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 34 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsCreate) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic void Delete(int key)\r\n\t\t{\r\n\t\t\tRepositorySource.Collection.Add(item);\r\n\t\t" +
+                    "}\r\n\t\t");
+            
+            #line 39 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 41 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsUpdate) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic void Update(int key)\r\n\t\t{\r\n\t\t\tRepositorySource.Collection = Enumerable.W" +
+                    "here(RepositorySource.Collection, t => t.");
+            
+            #line 44 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" != key);\r\n\t\t}\r\n\t\t");
+            
+            #line 46 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\EnumerableRepositoryTemplate.tt"
+        #line 1 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
 
-private global::NRepository.Params.EnumerableRepositoryTemplateParams _ParamsField;
+private global::NRepository.Params.CollectionRepositoryTemplateParams _ParamsField;
 
 /// <summary>
 /// Access the Params parameter of the template.
 /// </summary>
-private global::NRepository.Params.EnumerableRepositoryTemplateParams Params
+private global::NRepository.Params.CollectionRepositoryTemplateParams Params
 {
     get
     {
@@ -101,7 +174,7 @@ public virtual void Initialize()
 bool ParamsValueAcquired = false;
 if (this.Session.ContainsKey("Params"))
 {
-    this._ParamsField = ((global::NRepository.Params.EnumerableRepositoryTemplateParams)(this.Session["Params"]));
+    this._ParamsField = ((global::NRepository.Params.CollectionRepositoryTemplateParams)(this.Session["Params"]));
     ParamsValueAcquired = true;
 }
 if ((ParamsValueAcquired == false))
@@ -109,7 +182,7 @@ if ((ParamsValueAcquired == false))
     object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("Params");
     if ((data != null))
     {
-        this._ParamsField = ((global::NRepository.Params.EnumerableRepositoryTemplateParams)(data));
+        this._ParamsField = ((global::NRepository.Params.CollectionRepositoryTemplateParams)(data));
     }
 }
 
@@ -130,7 +203,7 @@ if ((ParamsValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public class EnumerableRepositoryTemplateBase
+    public class CollectionRepositoryTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

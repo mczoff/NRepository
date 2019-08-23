@@ -7,14 +7,13 @@ using System.Threading.Tasks;
 
 namespace NRepository.Core
 {
-    public class EnumerableRepositorySource<TModel>
+    public class CollectionRepositorySource<TModel>
         : IRepositorySource<TModel>
     {
-        public IEnumerable<TModel> Enumerable { get; }
-
-        public EnumerableRepositorySource(IEnumerable<TModel> enumerable)
+        public ICollection<TModel> Collection { get; set; }
+        public CollectionRepositorySource(ICollection<TModel> collection)
         {
-            Enumerable = enumerable;
+            Collection = collection;
         }
     }
 }

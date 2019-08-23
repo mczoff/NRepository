@@ -3,9 +3,6 @@ using NRepository.Samples.Collections.Models;
 using NRepository.Samples.Collections.Repositories;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NRepository.Samples.Collections
 {
@@ -13,7 +10,7 @@ namespace NRepository.Samples.Collections
     {
         static void Main(string[] args)
         {
-            Car[] cars = new[]
+            IList<Car> cars = new List<Car>
             {
                 new Car { Id = 0, Name = "BMW" },
                 new Car { Id = 1, Name = "Honda" },
@@ -23,13 +20,13 @@ namespace NRepository.Samples.Collections
             IRepositoryBuilder repositoryBuilder = new RepositoryBuilder();
 
             var repository = repositoryBuilder
-                .SetSource(new EnumerableRepositorySource<Car>(cars))
+                .SetSource(new CollectionRepositorySource<Car>(cars))
                 .Build<ICarRepository>();
 
             var selectedCar = repository.Select(0);
 
             if (selectedCar != null)
-                Console.WriteLine($"Selected car [{selectedCar.Id}] - {selectedCar.Name} ");
+                Console.WriteLine($"First selected car [{selectedCar.Id}] - {selectedCar.Name} ");
         }
     }
 }

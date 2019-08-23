@@ -1,0 +1,48 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Text" #>
+<#@ parameter name="Params" type="NRepository.Params.CollectionRepositoryTemplateParams" #>
+using System.Linq;
+
+namespace NRepository.Samples.Collections.Repositories
+{
+	public class <#=Params.Name#> : <#=Params.Interface#>
+	{
+		public <#=Params.Name#>(NRepository.Core.CollectionRepositorySource<<#=Params.FullNameModel#>> repositorySource)
+		{
+			RepositorySource = repositorySource;
+		}
+
+		public NRepository.Core.CollectionRepositorySource<<#=Params.FullNameModel#>> RepositorySource { get; private set; }
+
+		<# if(Params.Contract.IsSelect) { #>
+		public <#=Params.FullNameModel#> Select(int key)
+		{
+			return Enumerable.FirstOrDefault(RepositorySource.Collection, t => t.<#=Params.KeyName#> == key);
+		}
+		<# } #>
+
+		<# if(Params.Contract.IsDelete) { #>
+		public void Delete(int key)
+		{
+			var item = Select(key);
+
+			RepositorySource.Collection.Remove(item);
+		}
+		<# } #>
+
+		<# if(Params.Contract.IsCreate) { #>
+		public void Delete(int key)
+		{
+			RepositorySource.Collection.Add(item);
+		}
+		<# } #>
+
+		<# if(Params.Contract.IsUpdate) { #>
+		public void Update(int key)
+		{
+			RepositorySource.Collection = Enumerable.Where(RepositorySource.Collection, t => t.<#=Params.KeyName#> != key);
+		}
+		<# } #>
+	}
+}

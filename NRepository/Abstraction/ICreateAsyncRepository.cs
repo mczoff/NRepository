@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using NRepository.Attributes;
 using System.Threading.Tasks;
 
 namespace NRepository.Abstraction
 {
-    interface ICreateAsyncRepository<TModel>
+    [RepositoryContract("IsCreateAsync")]
+    public interface ICreateAsyncRepository<TModel>
     {
         Task Create(TModel model);
     }
