@@ -3,6 +3,7 @@ using NRepository.Samples.Collections.Models;
 using NRepository.Samples.Collections.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace NRepository.Samples.Collections
 {
@@ -25,8 +26,16 @@ namespace NRepository.Samples.Collections
 
             var selectedCar = repository.Select(0);
 
-            if (selectedCar != null)
-                Console.WriteLine($"First selected car [{selectedCar.Id}] - {selectedCar.Name} ");
+            //KeyNotFoundException();
+
+            //ArgumentException
+
+            repository.Create(new Car { Id = 3, Name = "Mazda" });
+
+            repository.Delete(3);
+
+            var items = repository.Select();
+            items.ToList().ForEach(t => Console.WriteLine($"Car [{t.Id}] - {t.Name} "));
         }
     }
 }

@@ -13,6 +13,7 @@ namespace NRepository.Params
         public string Interface { get; set; }
         public string FullNameModel { get; set; }
         public string KeyName { get; set; }
+        public string KeyType { get; set; }
 
         public RepositoryContract Contract { get; set; }
     }

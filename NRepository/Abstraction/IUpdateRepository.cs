@@ -5,6 +5,6 @@ namespace NRepository.Abstraction
     [RepositoryContract("IsUpdate")]
     public interface IUpdateRepository<TModel, TKey>
     {
-        void Update(TModel model, TKey key);
+        TKey Update(TModel model);
     }
 }

@@ -16,32 +16,54 @@ namespace NRepository.Samples.Collections.Repositories
 		public NRepository.Core.CollectionRepositorySource<<#=Params.FullNameModel#>> RepositorySource { get; private set; }
 
 		<# if(Params.Contract.IsSelect) { #>
-		public <#=Params.FullNameModel#> Select(int key)
+		public <#=Params.FullNameModel#> Select(<#=Params.KeyType#> key)
 		{
 			return Enumerable.FirstOrDefault(RepositorySource.Collection, t => t.<#=Params.KeyName#> == key);
+		}
+
+		public <#=Params.FullNameModel#>[] Select()
+		{
+			return Enumerable.ToArray(RepositorySource.Collection);
 		}
 		<# } #>
 
 		<# if(Params.Contract.IsDelete) { #>
-		public void Delete(int key)
+		public void Delete(<#=Params.KeyType#> key)
 		{
-			var item = Select(key);
+			var item = Enumerable.FirstOrDefault(RepositorySource.Collection, t => t.<#=Params.KeyName#> == key);
+
+			if(item == null)
+				throw new System.ArgumentException("Model with key " + key + " not found");
 
 			RepositorySource.Collection.Remove(item);
+		}
+
+		public void Delete(<#=Params.FullNameModel#> model)
+		{
+			Delete(model.<#=Params.KeyName#>);
 		}
 		<# } #>
 
 		<# if(Params.Contract.IsCreate) { #>
-		public void Delete(int key)
+		public <#=Params.KeyType#> Create(<#=Params.FullNameModel#> model)
 		{
-			RepositorySource.Collection.Add(item);
+			var item = Enumerable.FirstOrDefault(RepositorySource.Collection, t => t.<#=Params.KeyName#> == model.<#=Params.KeyName#>);
+
+			if(item != null)
+				throw new System.ArgumentException("Model with key " + item.<#=Params.KeyName#> + " already exist");
+
+			RepositorySource.Collection.Add(model);
+
+			return model.<#=Params.KeyName#>;
 		}
 		<# } #>
 
 		<# if(Params.Contract.IsUpdate) { #>
-		public void Update(int key)
+		public <#=Params.KeyType#> Update(<#=Params.FullNameModel#> model)
 		{
-			RepositorySource.Collection = Enumerable.Where(RepositorySource.Collection, t => t.<#=Params.KeyName#> != key);
+			Delete(model.<#=Params.KeyName#>);
+
+			return Create(model);
 		}
 		<# } #>
 	}

@@ -3,8 +3,8 @@
 namespace NRepository.Abstraction
 {
     [RepositoryContract("IsCreate")]
-    public interface ICreateRepository<TModel>
+    public interface ICreateRepository<TModel, TKey>
     {
-        void Create(TModel model);
+        TKey Create(TModel model);
     }
 }

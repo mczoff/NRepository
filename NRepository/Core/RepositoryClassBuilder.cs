@@ -14,14 +14,13 @@ using System.Threading.Tasks;
 namespace NRepository.Core
 {
     public abstract class RepositoryClassBuilder
+        : IRepositoryClassBuilder
     {
         public List<string> RequiredAssemblies { get; set; }
-
         protected RepositoryClassBuilder()
         {
-            RequiredAssemblies = new List<string> { "NRepository.dll" };
+            RequiredAssemblies = new List<string> { "NRepository.dll", "System.Runtime.dll" };
         }
-
         public abstract TRepository CreateRepositoryInstance<TRepository>(object repositorySource);
 
         public RepositoryContract GenerateRepositoryContract(Type[] typeInterfaces)

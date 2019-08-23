@@ -10,7 +10,9 @@ namespace NRepository.Samples.Collections.Repositories
 {
     public interface ICarRepository
         : ISelectRepository<Car, int>,
-          IDeleteRepository<int>
+          IDeleteRepository<Car, int>,
+          ICreateRepository<Car, int>,
+          IUpdateRepository<Car, int>
     {
     }
 }

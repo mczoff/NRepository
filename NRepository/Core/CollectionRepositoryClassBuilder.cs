@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.CSharp;
 using NRepository.Abstraction.Core;
+using NRepository.Attributes;
 using NRepository.Params;
 using NRepository.Templates;
 
@@ -31,12 +32,18 @@ namespace NRepository.Core
 
             var repositoryName = typeof(TRepository).Name.TrimStart('I', 'i');
 
+            var key = repositorySource.GetType().GenericTypeArguments[0].GetProperties().FirstOrDefault(t => t.GetCustomAttribute<RepositoryKeyAttribute>() != null);
+
+            if (key == null)
+                throw new Exception();
+
             CollectionRepositoryTemplateParams enumerableRepositoryTemplateParams = new CollectionRepositoryTemplateParams
             {
                 Name = repositoryName,
                 Interface = typeof(TRepository).Name,
                 FullNameModel = repositorySource.GetType().GenericTypeArguments[0].FullName,
-                KeyName = "Id",
+                KeyName = key.Name,
+                KeyType = key.PropertyType.FullName,
                 Contract = GenerateRepositoryContract(typeof(TRepository).GetInterfaces())
             };
 

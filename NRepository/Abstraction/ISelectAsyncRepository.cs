@@ -7,5 +7,6 @@ namespace NRepository.Abstraction
     public interface ISelectAsyncRepository<TModel, TKey>
     {
         Task<TModel> SelectAsync(TKey key);
+        Task<TModel[]> SelectAsync();
     }
 }

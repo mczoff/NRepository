@@ -11,5 +11,6 @@ namespace NRepository.Abstraction
     public interface ISelectRepository<TModel, TKey>
     {
         TModel Select(TKey key);
+        TModel[] Select();
     }
 }

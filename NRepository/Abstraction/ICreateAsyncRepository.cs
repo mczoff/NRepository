@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 namespace NRepository.Abstraction
 {
     [RepositoryContract("IsCreateAsync")]
-    public interface ICreateAsyncRepository<TModel>
+    public interface ICreateAsyncRepository<TModel, TKey>
     {
-        Task Create(TModel model);
+        Task<TKey> Create(TModel model);
     }
 }

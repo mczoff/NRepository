@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstraction\Core\IRepositoryClassBuilder.cs" />
-    <Compile Include="Abstraction\Core\IRepositoryProvider.cs" />
     <Compile Include="Abstraction\Core\IRepositorySource.cs" />
     <Compile Include="Abstraction\ICountAsyncRepository.cs" />
     <Compile Include="Abstraction\ICountRepository.cs" />
@@ -55,10 +54,9 @@
     <Compile Include="Abstraction\IUpdateAsyncRepository.cs" />
     <Compile Include="Abstraction\IUpdateRepository.cs" />
     <Compile Include="Attributes\RepositoryContractAttribute.cs" />
-    <Compile Include="Attributes\RepositoryIdAttribute.cs" />
+    <Compile Include="Attributes\RepositoryKeyAttribute.cs" />
     <Compile Include="Core\CollectionRepositorySource.cs" />
     <Compile Include="Core\CollectionRepositoryClassBuilder.cs" />
-    <Compile Include="Core\CollectionRepositoryProvider.cs" />
     <Compile Include="Core\RepositoryClassBuilder.cs" />
     <Compile Include="Factories\RepositoryFactory.cs" />
     <Compile Include="IRepositoryBuilder.cs" />
