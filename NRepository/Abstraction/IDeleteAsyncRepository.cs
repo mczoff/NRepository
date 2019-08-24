@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using NRepository.Attributes;
 using System.Threading.Tasks;
 
 namespace NRepository.Abstraction
 {
-    public interface IDeleteAsyncRepository<TKey>
+    [RepositoryContract("IsDeleteAsync")]
+    public interface IDeleteAsyncRepository<TModel, TKey>
     {
-        Task Delete(TKey key);
+        Task DeleteAsync(TModel key);
+        Task DeleteAsync(TKey key);
     }
 }

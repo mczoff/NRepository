@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NRepository.Attributes;
 
 namespace NRepository.Abstraction
 {
-    public interface IDeleteRepository<TKey>
+    [RepositoryContract("IsDelete")]
+    public interface IDeleteRepository<TModel, TKey>
     {
+        void Delete(TModel key);
+
         void Delete(TKey key);
     }
 }

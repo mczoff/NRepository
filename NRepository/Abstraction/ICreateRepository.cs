@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using NRepository.Attributes;
 
 namespace NRepository.Abstraction
 {
-    public interface ICreateRepository<TModel>
+    [RepositoryContract("IsCreate")]
+    public interface ICreateRepository<TModel, TKey>
     {
-        void Create(TModel model);
+        TKey Create(TModel model);
     }
 }

@@ -8,6 +8,6 @@ namespace NRepository.Abstraction.Core
 {
     public interface IRepositoryClassBuilder
     {
-        TRepository CreateRepositoryInstance<TRepository>();
+        TRepository CreateRepositoryInstance<TRepository>(object repositorySource);
     }
 }

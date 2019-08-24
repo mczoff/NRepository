@@ -12,7 +12,7 @@ namespace NRepository.Factories
     {
         public static TRepository Create<TRepository>(object repositorySource)
         {
-            RepositoryClassBuilder repositoryClassBuilder = new EnumerableRepositoryClassBuilder();
+            RepositoryClassBuilder repositoryClassBuilder = new CollectionRepositoryClassBuilder();
 
             return repositoryClassBuilder.CreateRepositoryInstance<TRepository>(repositorySource);
         }
