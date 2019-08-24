@@ -26,6 +26,8 @@ namespace NRepository.Core
             RequiredAssemblies.Add("System.Core.dll");
         }
 
+
+        //TODO: Check type RepositoryId and TKey
         public override TRepository CreateRepositoryInstance<TRepository>(object repositorySource)
         {
             CollectionRepositoryTemplate enumerableRepositoryTemplate = new CollectionRepositoryTemplate();
@@ -41,6 +43,7 @@ namespace NRepository.Core
             {
                 Name = repositoryName,
                 Interface = typeof(TRepository).Name,
+                NameSpace = typeof(TRepository).Namespace,
                 FullNameModel = repositorySource.GetType().GenericTypeArguments[0].FullName,
                 KeyName = key.Name,
                 KeyType = key.PropertyType.FullName,
@@ -62,9 +65,9 @@ namespace NRepository.Core
                     GenerateInMemory = true,
                 };
 
-                var entryAssembly = Assembly.GetEntryAssembly().Modules.First();
+                var assemblyModule = repositorySource.GetType().GenericTypeArguments[0].Assembly.Modules.First();
 
-                compileParams.ReferencedAssemblies.AddRange(RequiredAssemblies.Concat(new[] { entryAssembly.Name }).ToArray());
+                compileParams.ReferencedAssemblies.AddRange(RequiredAssemblies.Concat(new[] { assemblyModule.FullyQualifiedName }).ToArray());
 
                 var result = compiler.CompileAssemblyFromSource(compileParams, code);
 

@@ -26,8 +26,14 @@ namespace NRepository.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System.Linq;\r\n\r\nnamespace NRepository.Samples.Collections.Repositories\r\n{\r\n" +
-                    "\tpublic class ");
+            this.Write("using System.Linq;\r\n\r\nnamespace ");
+            
+            #line 7 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.NameSpace));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n{\r\n\tpublic class ");
             
             #line 9 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.Name));

@@ -19,7 +19,9 @@ namespace NRepository.Core
         public List<string> RequiredAssemblies { get; set; }
         protected RepositoryClassBuilder()
         {
-            RequiredAssemblies = new List<string> { "NRepository.dll", "System.Runtime.dll" };
+            var fullpathNRepositoryAssembly = Assembly.Load("NRepository").Modules.First().FullyQualifiedName;
+
+            RequiredAssemblies = new List<string> { fullpathNRepositoryAssembly, "System.Runtime.dll" };
         }
         public abstract TRepository CreateRepositoryInstance<TRepository>(object repositorySource);
 

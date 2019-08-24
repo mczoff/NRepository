@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstraction\Core\IAssemblyLoader.cs" />
     <Compile Include="Abstraction\Core\IRepositoryClassBuilder.cs" />
     <Compile Include="Abstraction\Core\IRepositorySource.cs" />
     <Compile Include="Abstraction\ICountAsyncRepository.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Core\RepositoryClassBuilder.cs" />
     <Compile Include="Factories\RepositoryFactory.cs" />
     <Compile Include="IRepositoryBuilder.cs" />
+    <Compile Include="Models\AssemblyLoader.cs" />
     <Compile Include="Params\CollectionRepositoryTemplateParams.cs" />
     <Compile Include="Models\RepositoryContract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,7 +4,7 @@
 <#@ parameter name="Params" type="NRepository.Params.CollectionRepositoryTemplateParams" #>
 using System.Linq;
 
-namespace NRepository.Samples.Collections.Repositories
+namespace <#=Params.NameSpace#>
 {
 	public class <#=Params.Name#> : <#=Params.Interface#>
 	{
