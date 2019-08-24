@@ -4,12 +4,13 @@ using NRepository.Samples.Collections.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace NRepository.Samples.Collections
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             IList<Car> cars = new List<Car>
             {
@@ -24,17 +25,17 @@ namespace NRepository.Samples.Collections
                 .SetSource(new CollectionRepositorySource<Car>(cars))
                 .Build<ICarRepository>();
 
-            var selectedCar = repository.Select(0);
+            var selectedCar = repository.SelectAsync(0);
 
             //KeyNotFoundException();
 
             //ArgumentException
 
-            repository.Create(new Car { Id = 3, Name = "Mazda" });
+            repository.CreateAsync(new Car { Id = 3, Name = "Mazda" });
 
-            repository.Delete(3);
+            repository.DeleteAsync(3);
 
-            var items = repository.Select();
+            var items = await repository.SelectAsync();
             items.ToList().ForEach(t => Console.WriteLine($"Car [{t.Id}] - {t.Name} "));
         }
     }

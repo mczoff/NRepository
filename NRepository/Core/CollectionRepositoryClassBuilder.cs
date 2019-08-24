@@ -68,8 +68,6 @@ namespace NRepository.Core
 
                 var result = compiler.CompileAssemblyFromSource(compileParams, code);
 
-                //Result Has Errors
-
                 var repositoryType = Array.Find(result.CompiledAssembly.GetTypes(), t => t.Name == repositoryName);
 
                 return (TRepository)Activator.CreateInstance(repositoryType, new object[] { repositorySource });

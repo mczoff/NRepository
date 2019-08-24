@@ -6,7 +6,7 @@ namespace NRepository.Abstraction
     [RepositoryContract("IsDeleteAsync")]
     public interface IDeleteAsyncRepository<TModel, TKey>
     {
-        Task Delete(TModel key);
-        Task Delete(TKey key);
+        Task DeleteAsync(TModel key);
+        Task DeleteAsync(TKey key);
     }
 }

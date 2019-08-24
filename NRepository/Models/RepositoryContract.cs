@@ -13,7 +13,7 @@ namespace NRepository.Models
         public bool IsDelete { get; set; }
         public bool IsDeleteAsync { get; set; }
         public bool IsCreate { get; set; }
-        public bool IsCreatetAsync { get; set; }
+        public bool IsCreateAsync { get; set; }
         public bool IsUpdate{ get; set; }
         public bool IsUpdateAsync { get; set; }
     }

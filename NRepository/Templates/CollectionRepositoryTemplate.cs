@@ -110,13 +110,57 @@ namespace NRepository.Templates
             this.Write("\r\n\t\t");
             
             #line 30 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsSelectAsync) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic async System.Threading.Tasks.Task<");
+            
+            #line 31 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write("> SelectAsync(");
+            
+            #line 31 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
+            
+            #line default
+            #line hidden
+            this.Write(" key)\r\n\t\t{\r\n\t\t\treturn Enumerable.FirstOrDefault(RepositorySource.Collection, t =>" +
+                    " t.");
+            
+            #line 33 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" == key);\r\n\t\t}\r\n\r\n\t\tpublic async System.Threading.Tasks.Task<");
+            
+            #line 36 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write("[]> SelectAsync()\r\n\t\t{\r\n\t\t\treturn Enumerable.ToArray(RepositorySource.Collection)" +
+                    ";\r\n\t\t}\r\n\t\t");
+            
+            #line 40 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 42 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
  if(Params.Contract.IsDelete) { 
             
             #line default
             #line hidden
             this.Write("\t\tpublic void Delete(");
             
-            #line 31 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 43 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
             
             #line default
@@ -124,51 +168,96 @@ namespace NRepository.Templates
             this.Write(" key)\r\n\t\t{\r\n\t\t\tvar item = Enumerable.FirstOrDefault(RepositorySource.Collection, " +
                     "t => t.");
             
-            #line 33 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 45 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
             
             #line default
             #line hidden
-            this.Write(" == key);\r\n\r\n\t\t\tif(item == null)\r\n\t\t\t\tthrow new System.ArgumentException(\"Model w" +
-                    "ith key \" + key + \" not found\");\r\n\r\n\t\t\tRepositorySource.Collection.Remove(item);" +
-                    "\r\n\t\t}\r\n\r\n\t\tpublic void Delete(");
+            this.Write(" == key);\r\n\r\n\t\t\tif(item == null)\r\n\t\t\t\tthrow new System.ArgumentException(\"Cant de" +
+                    "lete model with key \" + key + \". Not found\");\r\n\r\n\t\t\tRepositorySource.Collection." +
+                    "Remove(item);\r\n\t\t}\r\n\r\n\t\tpublic void Delete(");
             
-            #line 41 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 53 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
             #line hidden
             this.Write(" model)\r\n\t\t{\r\n\t\t\tDelete(model.");
             
-            #line 43 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 55 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
             
             #line default
             #line hidden
             this.Write(");\r\n\t\t}\r\n\t\t");
             
-            #line 45 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 57 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\r\n\t\t");
             
-            #line 47 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 59 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsDeleteAsync) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic async System.Threading.Tasks.Task DeleteAsync(");
+            
+            #line 60 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
+            
+            #line default
+            #line hidden
+            this.Write(" key)\r\n\t\t{\r\n\t\t\tvar item = Enumerable.FirstOrDefault(RepositorySource.Collection, " +
+                    "t => t.");
+            
+            #line 62 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" == key);\r\n\r\n\t\t\tif(item == null)\r\n\t\t\t\tthrow new System.ArgumentException(\"Cant de" +
+                    "lete model with key \" + key + \". Not found\");\r\n\r\n\t\t\tRepositorySource.Collection." +
+                    "Remove(item);\r\n\t\t}\r\n\r\n\t\tpublic async System.Threading.Tasks.Task DeleteAsync(");
+            
+            #line 70 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write(" model)\r\n\t\t{\r\n\t\t\tawait DeleteAsync(model.");
+            
+            #line 72 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n\t\t}\r\n\t\t");
+            
+            #line 74 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 76 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
  if(Params.Contract.IsCreate) { 
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 48 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 77 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
             
             #line default
             #line hidden
             this.Write(" Create(");
             
-            #line 48 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 77 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
@@ -176,72 +265,214 @@ namespace NRepository.Templates
             this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = Enumerable.FirstOrDefault(RepositorySource.Collection" +
                     ", t => t.");
             
-            #line 50 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 79 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
             
             #line default
             #line hidden
             this.Write(" == model.");
             
-            #line 50 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 79 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
             
             #line default
             #line hidden
-            this.Write(");\r\n\r\n\t\t\tif(item != null)\r\n\t\t\t\tthrow new System.ArgumentException(\"Model with key" +
-                    " \" + item.");
+            this.Write(");\r\n\r\n\t\t\tif(item != null)\r\n\t\t\t\tthrow new System.ArgumentException(\"Cant create mo" +
+                    "del with key \" + item.");
             
-            #line 53 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 82 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
             
             #line default
             #line hidden
-            this.Write(" + \" already exist\");\r\n\r\n\t\t\tRepositorySource.Collection.Add(model);\r\n\r\n\t\t\treturn " +
-                    "model.");
+            this.Write(" + \". Already exist\");\r\n\r\n\t\t\tRepositorySource.Collection.Add(model);\r\n\r\n\t\t\treturn" +
+                    " model.");
             
-            #line 57 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 86 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
             
             #line default
             #line hidden
             this.Write(";\r\n\t\t}\r\n\t\t");
             
-            #line 59 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 88 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\r\n\t\t");
             
-            #line 61 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 90 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsCreateAsync) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic async System.Threading.Tasks.Task<");
+            
+            #line 91 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
+            
+            #line default
+            #line hidden
+            this.Write("> CreateAsync(");
+            
+            #line 91 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = Enumerable.FirstOrDefault(RepositorySource.Collection" +
+                    ", t => t.");
+            
+            #line 93 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" == model.");
+            
+            #line 93 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n\r\n\t\t\tif(item != null)\r\n\t\t\t\tthrow new System.ArgumentException(\"Cant create mo" +
+                    "del with key \" + item.");
+            
+            #line 96 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" + \". Already exist\");\r\n\r\n\t\t\tRepositorySource.Collection.Add(model);\r\n\r\n\t\t\treturn" +
+                    " model.");
+            
+            #line 100 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n\t\t}\r\n\t\t");
+            
+            #line 102 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 104 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
  if(Params.Contract.IsUpdate) { 
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 62 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 105 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
             
             #line default
             #line hidden
             this.Write(" Update(");
             
-            #line 62 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 105 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
             #line hidden
-            this.Write(" model)\r\n\t\t{\r\n\t\t\tDelete(model.");
+            this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = Enumerable.FirstOrDefault(RepositorySource.Collection" +
+                    ", t => t.");
             
-            #line 64 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 107 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
             
             #line default
             #line hidden
-            this.Write(");\r\n\r\n\t\t\treturn Create(model);\r\n\t\t}\r\n\t\t");
+            this.Write(" == model.");
             
-            #line 68 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            #line 107 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n\r\n\t\t\tif(item == null)\r\n\t\t\t\tthrow new System.ArgumentException(\"Cant update mo" +
+                    "del with key \" + model.");
+            
+            #line 110 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" + \". Not found\");\r\n\r\n\t\t\tRepositorySource.Collection.Remove(model);\r\n\r\n\t\t\tReposit" +
+                    "orySource.Collection.Add(model);\r\n\r\n\t\t\treturn model.");
+            
+            #line 116 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n\t\t}\r\n\t\t");
+            
+            #line 118 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 120 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsUpdateAsync) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic async System.Threading.Tasks.Task<");
+            
+            #line 121 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
+            
+            #line default
+            #line hidden
+            this.Write("> UpdateAsync(");
+            
+            #line 121 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = Enumerable.FirstOrDefault(RepositorySource.Collection" +
+                    ", t => t.");
+            
+            #line 123 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" == model.");
+            
+            #line 123 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(");\r\n\r\n\t\t\tif(item == null)\r\n\t\t\t\tthrow new System.ArgumentException(\"Cant update mo" +
+                    "del with key \" + model.");
+            
+            #line 126 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" + \". Not found\");\r\n\r\n\t\t\tRepositorySource.Collection.Remove(model);\r\n\r\n\t\t\tReposit" +
+                    "orySource.Collection.Add(model);\r\n\r\n\t\t\treturn model.");
+            
+            #line 132 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n\t\t}\r\n\t\t");
+            
+            #line 134 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
  } 
             
             #line default
