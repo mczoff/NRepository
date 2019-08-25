@@ -18,7 +18,6 @@ namespace NRepository.Tests.CollectionTests
             _repositoryBuilder = new RepositoryBuilder();
         }
 
-
         [Test]
         public void CompileRepositoryWithoutSource()
         {

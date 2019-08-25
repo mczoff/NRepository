@@ -47,12 +47,17 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CollectionTests\InterfacesTests\CreateTests\GuidRepositoryTests.cs" />
+    <Compile Include="CollectionTests\InterfacesTests\DeleteTests\GuidRepositoryTests.cs" />
     <Compile Include="CollectionTests\InterfacesTests\SelectTests\GuidRepositoryTests.cs" />
+    <Compile Include="CollectionTests\InterfacesTests\UpdateTests\GuidRepositoryTests.cs" />
     <Compile Include="CollectionTests\SourceTests.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\GuidKeyTestItem.cs" />
     <Compile Include="Utils\IGuidKeyTestSelectRepository.cs" />
+    <Compile Include="Utils\IGuidKeyTestDeleteRepository.cs" />
+    <Compile Include="Utils\IGuidKeyTestCreateRepository.cs" />
+    <Compile Include="Utils\IGuidKeyTestUpdateRepository.cs" />
     <Compile Include="Utils\IntKeyTestItem.cs" />
     <Compile Include="Utils\StringKeyTestItem.cs" />
   </ItemGroup>

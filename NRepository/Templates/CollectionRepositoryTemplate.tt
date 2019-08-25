@@ -52,6 +52,9 @@ namespace <#=Params.NameSpace#>
 
 		public void Delete(<#=Params.FullNameModel#> model)
 		{
+			if(model == null)
+				throw new System.ArgumentNullException("Model was null");
+
 			Delete(model.<#=Params.KeyName#>);
 		}
 		<# } #>
