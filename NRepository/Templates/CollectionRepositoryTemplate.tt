@@ -4,7 +4,7 @@
 <#@ parameter name="Params" type="NRepository.Params.CollectionRepositoryTemplateParams" #>
 using System.Linq;
 
-namespace NRepository.Samples.Collections.Repositories
+namespace <#=Params.NameSpace#>
 {
 	public class <#=Params.Name#> : <#=Params.Interface#>
 	{
@@ -52,6 +52,9 @@ namespace NRepository.Samples.Collections.Repositories
 
 		public void Delete(<#=Params.FullNameModel#> model)
 		{
+			if(model == null)
+				throw new System.ArgumentNullException("Model was null");
+
 			Delete(model.<#=Params.KeyName#>);
 		}
 		<# } #>

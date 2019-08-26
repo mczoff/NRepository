@@ -1,31 +1,24 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Dynamic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.CSharp;
-using NRepository.Abstraction.Core;
+﻿using Microsoft.CSharp;
 using NRepository.Attributes;
 using NRepository.Params;
 using NRepository.Templates;
+using System;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace NRepository.Core
 {
-    public class CollectionRepositoryClassBuilder
-        : RepositoryClassBuilder
+    public class CollectionRepositoryClassBuilder : RepositoryClassBuilder
     {
         public CollectionRepositoryClassBuilder()
         {
             RequiredAssemblies.Add("System.Core.dll");
         }
 
+
+        //TODO: Check type RepositoryId and TKey
         public override TRepository CreateRepositoryInstance<TRepository>(object repositorySource)
         {
             CollectionRepositoryTemplate enumerableRepositoryTemplate = new CollectionRepositoryTemplate();
@@ -41,6 +34,7 @@ namespace NRepository.Core
             {
                 Name = repositoryName,
                 Interface = typeof(TRepository).Name,
+                NameSpace = typeof(TRepository).Namespace,
                 FullNameModel = repositorySource.GetType().GenericTypeArguments[0].FullName,
                 KeyName = key.Name,
                 KeyType = key.PropertyType.FullName,
@@ -62,9 +56,9 @@ namespace NRepository.Core
                     GenerateInMemory = true,
                 };
 
-                var entryAssembly = Assembly.GetEntryAssembly().Modules.First();
+                var assemblyModule = repositorySource.GetType().GenericTypeArguments[0].Assembly.Modules.First();
 
-                compileParams.ReferencedAssemblies.AddRange(RequiredAssemblies.Concat(new[] { entryAssembly.Name }).ToArray());
+                compileParams.ReferencedAssemblies.AddRange(RequiredAssemblies.Concat(new[] { assemblyModule.FullyQualifiedName }).ToArray());
 
                 var result = compiler.CompileAssemblyFromSource(compileParams, code);
 

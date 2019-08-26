@@ -41,30 +41,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstraction\Core\IRepositoryClassBuilder.cs" />
-    <Compile Include="Abstraction\Core\IRepositorySource.cs" />
-    <Compile Include="Abstraction\ICountAsyncRepository.cs" />
-    <Compile Include="Abstraction\ICountRepository.cs" />
-    <Compile Include="Abstraction\ICreateAsyncRepository.cs" />
-    <Compile Include="Abstraction\ICreateRepository.cs" />
-    <Compile Include="Abstraction\IDeleteAsyncRepository.cs" />
-    <Compile Include="Abstraction\IDeleteRepository.cs" />
-    <Compile Include="Abstraction\ISelectAsyncRepository.cs" />
-    <Compile Include="Abstraction\ISelectRepository.cs" />
-    <Compile Include="Abstraction\IUpdateAsyncRepository.cs" />
-    <Compile Include="Abstraction\IUpdateRepository.cs" />
+    <Compile Include="Abstractions\Core\IAssemblyLoader.cs" />
+    <Compile Include="Abstractions\Core\IRepositoryClassBuilder.cs" />
+    <Compile Include="Abstractions\Core\IRepositoryPolicy.cs" />
+    <Compile Include="Abstractions\Core\IRepositorySource.cs" />
+    <Compile Include="Abstractions\ICountAsyncRepository.cs" />
+    <Compile Include="Abstractions\ICountRepository.cs" />
+    <Compile Include="Abstractions\ICreateAsyncRepository.cs" />
+    <Compile Include="Abstractions\ICreateRepository.cs" />
+    <Compile Include="Abstractions\IDeleteAsyncRepository.cs" />
+    <Compile Include="Abstractions\IDeleteRepository.cs" />
+    <Compile Include="Abstractions\ISelectAsyncRepository.cs" />
+    <Compile Include="Abstractions\ISelectRepository.cs" />
+    <Compile Include="Abstractions\IUpdateAsyncRepository.cs" />
+    <Compile Include="Abstractions\IUpdateRepository.cs" />
     <Compile Include="Attributes\RepositoryContractAttribute.cs" />
     <Compile Include="Attributes\RepositoryKeyAttribute.cs" />
+    <Compile Include="Attributes\RepositoryPolicyAttribute.cs" />
     <Compile Include="Core\CollectionRepositorySource.cs" />
     <Compile Include="Core\CollectionRepositoryClassBuilder.cs" />
     <Compile Include="Core\RepositoryClassBuilder.cs" />
     <Compile Include="Factories\RepositoryFactory.cs" />
     <Compile Include="IRepositoryBuilder.cs" />
+    <Compile Include="Models\AssemblyLoader.cs" />
     <Compile Include="Params\CollectionRepositoryTemplateParams.cs" />
     <Compile Include="Models\RepositoryContract.cs" />
+    <Compile Include="Policies\CollectionBuilderPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryBuilder.cs" />
-    <Compile Include="Service\RepositoryInterfaceStringService.cs" />
     <Compile Include="Templates\CollectionRepositoryTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

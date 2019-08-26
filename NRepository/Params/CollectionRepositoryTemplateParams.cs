@@ -10,6 +10,7 @@ namespace NRepository.Params
     public class CollectionRepositoryTemplateParams
     {
         public string Name { get; set; }
+        public string NameSpace { get; set; }
         public string Interface { get; set; }
         public string FullNameModel { get; set; }
         public string KeyName { get; set; }
