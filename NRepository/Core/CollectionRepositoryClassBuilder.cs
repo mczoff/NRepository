@@ -1,25 +1,16 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Dynamic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.CSharp;
-using NRepository.Abstraction.Core;
+﻿using Microsoft.CSharp;
 using NRepository.Attributes;
 using NRepository.Params;
 using NRepository.Templates;
+using System;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace NRepository.Core
 {
-    public class CollectionRepositoryClassBuilder
-        : RepositoryClassBuilder
+    public class CollectionRepositoryClassBuilder : RepositoryClassBuilder
     {
         public CollectionRepositoryClassBuilder()
         {

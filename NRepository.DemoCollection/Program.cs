@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NRepository.Abstraction.Core
+namespace NRepository.DemoCollection
 {
-    internal interface IAssemblyLoader
+    class Program
     {
-        Assembly GetEntryAssembly();
+        static void Main(string[] args)
+        {
+        }
     }
 }

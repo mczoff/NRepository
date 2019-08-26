@@ -1,4 +1,5 @@
-﻿using NRepository.Abstraction.Core;
+﻿using NRepository.Abstractions.Core;
+using NRepository.Core;
 using NRepository.Factories;
 using System;
 using System.Collections.Generic;
@@ -11,16 +12,16 @@ namespace NRepository
     public class RepositoryBuilder
         : IRepositoryBuilder
     {
-        private object _repositorySource;
+        public object RepositorySource { get; set; }
 
         public TRepository Build<TRepository>()
         {
-            return RepositoryFactory.Create<TRepository>(_repositorySource);
+            return RepositoryFactory.Create<TRepository>(RepositorySource);
         }
 
-        public IRepositoryBuilder SetSource<TModel>(IRepositorySource<TModel> repositorySource)
+        public IRepositoryBuilder SetSource<TModel>(CollectionRepositorySource<TModel> repositorySource)
         {
-            _repositorySource = repositorySource;
+            RepositorySource = repositorySource;
 
             return this;
         }

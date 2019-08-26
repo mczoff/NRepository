@@ -1,6 +1,6 @@
 ﻿using NRepository.Attributes;
 
-namespace NRepository.Abstraction
+namespace NRepository.Abstractions
 {
     [RepositoryContract("IsCreate")]
     public interface ICreateRepository<TModel, TKey>

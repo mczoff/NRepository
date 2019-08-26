@@ -12,6 +12,5 @@ namespace NRepository.Tests.CollectionTests.InterfacesTests.UpdateTests
     [TestFixture]
     public class GuidRepositoryTests
     {
-       
     }
 }

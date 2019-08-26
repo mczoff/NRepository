@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NRepository.Abstraction.Core
+namespace NRepository.DemoEntityFramework
 {
-    public interface IRepositorySource<TModel>
+    public class Car
     {
+        public int Id { get; set; }
+        public string Value { get; set; }
     }
 }

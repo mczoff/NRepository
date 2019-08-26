@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NRepository.Abstraction
+namespace NRepository.Abstractions
 {
-    public interface ICountRepository
+    public interface ICountAsyncRepository
     {
-        void Count();
+        Task CountAsync();
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NRepository.Abstraction
+namespace NRepository.Abstractions
 {
     [RepositoryContract("IsSelect")]
     public interface ISelectRepository<TModel, TKey>

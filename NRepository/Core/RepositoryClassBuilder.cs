@@ -1,20 +1,14 @@
-﻿using NRepository.Abstraction.Core;
+﻿using NRepository.Abstractions.Core;
 using NRepository.Attributes;
 using NRepository.Models;
-using NRepository.Params;
-using NRepository.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NRepository.Core
 {
-    public abstract class RepositoryClassBuilder
-        : IRepositoryClassBuilder
+    public abstract class RepositoryClassBuilder : IRepositoryClassBuilder
     {
         public List<string> RequiredAssemblies { get; set; }
         protected RepositoryClassBuilder()

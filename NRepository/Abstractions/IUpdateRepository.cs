@@ -1,6 +1,6 @@
 ﻿using NRepository.Attributes;
 
-namespace NRepository.Abstraction
+namespace NRepository.Abstractions
 {
     [RepositoryContract("IsUpdate")]
     public interface IUpdateRepository<TModel, TKey>

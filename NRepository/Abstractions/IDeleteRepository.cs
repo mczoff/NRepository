@@ -1,6 +1,6 @@
 ﻿using NRepository.Attributes;
 
-namespace NRepository.Abstraction
+namespace NRepository.Abstractions
 {
     [RepositoryContract("IsDelete")]
     public interface IDeleteRepository<TModel, TKey>

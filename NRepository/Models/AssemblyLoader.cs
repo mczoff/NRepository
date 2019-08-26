@@ -1,4 +1,4 @@
-﻿using NRepository.Abstraction.Core;
+﻿using NRepository.Abstractions.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;

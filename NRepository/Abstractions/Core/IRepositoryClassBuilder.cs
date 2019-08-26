@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NRepository.Abstraction.Core
+namespace NRepository.Abstractions.Core
 {
     public interface IRepositoryClassBuilder
     {

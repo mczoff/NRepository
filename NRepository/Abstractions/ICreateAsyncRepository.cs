@@ -1,7 +1,7 @@
 ﻿using NRepository.Attributes;
 using System.Threading.Tasks;
 
-namespace NRepository.Abstraction
+namespace NRepository.Abstractions
 {
     [RepositoryContract("IsCreateAsync")]
     public interface ICreateAsyncRepository<TModel, TKey>

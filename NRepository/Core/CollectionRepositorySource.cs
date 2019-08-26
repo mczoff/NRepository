@@ -1,15 +1,11 @@
-﻿using NRepository.Abstraction.Core;
+﻿using NRepository.Abstractions.Core;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NRepository.Core
 {
-    public class CollectionRepositorySource<TModel>
-        : IRepositorySource<TModel>
+    public sealed class CollectionRepositorySource<TModel> : IRepositorySource<TModel>
     {
         public ICollection<TModel> Collection { get; set; }
 
