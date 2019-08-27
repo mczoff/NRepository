@@ -16,11 +16,13 @@ namespace NRepository.DemoEntityFramework
 
             CarDbContext cardbContext = new CarDbContext();
 
+            //var repository = new TestRepo();
+
             var repository = repositoryBuilder
                 .SetSource(new EntityFrameworkRepositoryTransferSource<Car, CarEntity>(cardbContext.Cars, CastEntityToModel))
                 .Build<ICarRepository>();
 
-            var car = repository.Select(0);
+            var cars = repository.Select();
         }
 
 

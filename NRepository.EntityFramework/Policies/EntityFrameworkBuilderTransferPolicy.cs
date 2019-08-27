@@ -14,7 +14,7 @@ namespace NRepository.EntityFramework.Policies
     public class EntityFrameworkBuilderTransferPolicy
         : IRepositoryPolicy
     {
-        public RepositoryClassBuilder GetClassBuilder()
+        public IRepositoryClassBuilder GetClassBuilder()
             => new EntityFrameworkRepositoryTransferClassBuilder();
     }
 }

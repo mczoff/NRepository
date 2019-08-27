@@ -1,5 +1,7 @@
 ﻿using Microsoft.CSharp;
+using NRepository.Abstractions.Core;
 using NRepository.Attributes;
+using NRepository.Models;
 using NRepository.Params;
 using NRepository.Templates;
 using System;
@@ -10,18 +12,25 @@ using System.Reflection;
 
 namespace NRepository.Core
 {
-    public class CollectionRepositoryClassBuilder : RepositoryClassBuilder
+    public class CollectionRepositoryClassBuilder
+        : IRepositoryClassBuilder
     {
+        public List<string> RequiredAssemblies { get; set; }
+        public IRepositoryContractProvider ContractProvider { get; set; }
+
         public CollectionRepositoryClassBuilder()
         {
+            ContractProvider = new DefaultRepositoryContractProvider();
+
+            RequiredAssemblies = new List<string> { "NRepository", "System.Runtime" };
+
             RequiredAssemblies.Add("System.Core.dll");
         }
 
-
         //TODO: Check type RepositoryId and TKey
-        public override TRepository CreateRepositoryInstance<TRepository>(object repositorySource)
+        public TRepository CreateRepositoryInstance<TRepository>(object repositorySource)
         {
-            CollectionRepositoryTemplate enumerableRepositoryTemplate = new CollectionRepositoryTemplate();
+            var template = new CollectionRepositoryTemplate();
 
             var repositoryName = typeof(TRepository).Name.TrimStart('I', 'i');
 
@@ -38,16 +47,16 @@ namespace NRepository.Core
                 FullNameModel = repositorySource.GetType().GenericTypeArguments[0].FullName,
                 KeyName = key.Name,
                 KeyType = key.PropertyType.FullName,
-                Contract = GenerateRepositoryContract(typeof(TRepository).GetInterfaces())
+                Contract = ContractProvider.GenerateRepositoryContract(typeof(TRepository).GetInterfaces())
             };
 
-            enumerableRepositoryTemplate.Session = new Dictionary<string, object>
+            template.Session = new Dictionary<string, object>
             {
                 {  "Params", enumerableRepositoryTemplateParams }
             };
 
-            enumerableRepositoryTemplate.Initialize();
-            string code = enumerableRepositoryTemplate.TransformText();
+            template.Initialize();
+            string code = template.TransformText();
 
             using (CSharpCodeProvider compiler = new CSharpCodeProvider())
             {
@@ -69,4 +78,3 @@ namespace NRepository.Core
         }
     }
 }
-

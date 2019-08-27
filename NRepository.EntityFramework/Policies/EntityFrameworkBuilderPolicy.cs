@@ -14,7 +14,7 @@ namespace NRepository.EntityFramework.Policies
     public class EntityFrameworkBuilderPolicy
         : IRepositoryPolicy
     {
-        public RepositoryClassBuilder GetClassBuilder()
+        public IRepositoryClassBuilder GetClassBuilder()
         {
             throw new NotImplementedException();
         }

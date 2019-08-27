@@ -1,4 +1,4 @@
-﻿using NRepository.Core;
+﻿using NRepository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace NRepository.Abstractions.Core
 {
-    public interface IRepositoryPolicy
+    public interface IRepositoryContractProvider
     {
-        IRepositoryClassBuilder GetClassBuilder();
+        RepositoryContract GenerateRepositoryContract(Type[] typeInterfaces);
     }
 }
