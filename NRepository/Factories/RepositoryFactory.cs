@@ -1,4 +1,5 @@
-﻿using NRepository.Attributes;
+﻿using NRepository.Abstractions.Core;
+using NRepository.Attributes;
 using NRepository.Core;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace NRepository.Factories
 
             var policy = Activator.CreateInstance(policyType);
 
-            var repositoryClassBuilder = policyMethod.Invoke(policy, new object[] { }) as RepositoryClassBuilder;
+            var repositoryClassBuilder = policyMethod.Invoke(policy, new object[] { }) as IRepositoryClassBuilder;
 
             return repositoryClassBuilder.CreateRepositoryInstance<TRepository>(repositorySource);
         }

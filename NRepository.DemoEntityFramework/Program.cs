@@ -17,14 +17,16 @@ namespace NRepository.DemoEntityFramework
             CarDbContext cardbContext = new CarDbContext();
 
             var repository = repositoryBuilder
-                .SetSource(new EntityFrameworkRepositoryTransferSource<Car, CarEntity>(cardbContext.Cars, CastEntityToModel))
+                .SetSource(new EntityFrameworkRepositorySource<CarEntity>(cardbContext, cardbContext.Cars))
                 .Build<ICarRepository>();
 
-            var car = repository.Select(0);
+            var car = repository.Select(1);
+
+            car.Value = "LADA";
+
+            repository.Update(car);
+
+            var cars = repository.Select();
         }
-
-
-        private static Car CastEntityToModel(CarEntity caeEntity)
-            => new Car { Id = caeEntity.Id, Value = caeEntity.Value };
     }
 }

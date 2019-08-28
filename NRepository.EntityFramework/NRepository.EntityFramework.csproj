@@ -48,13 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\EntityFrameworkRepositoryClassBuilder.cs" />
     <Compile Include="Core\EntityFrameworkRepositorySource.cs" />
-    <Compile Include="Core\EntityFrameworkRepositoryTransferSource.cs" />
-    <Compile Include="Core\EntityFrameworkRepositoryTransferClassBuilder.cs" />
+    <Compile Include="Params\EntityFrameworkRepositoryTemplateParams.cs" />
     <Compile Include="Policies\EntityFrameworkBuilderPolicy.cs" />
-    <Compile Include="Policies\EntityFrameworkBuilderTransferPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryBuilderEFHelper.cs" />
+    <Compile Include="Templates\EntityFrameworkRepositoryTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityFrameworkRepositoryTemplate.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NRepository\NRepository.csproj">
@@ -68,7 +72,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstractions\" />
-    <Folder Include="Templates\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\EntityFrameworkRepositoryTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>EntityFrameworkRepositoryTemplate.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

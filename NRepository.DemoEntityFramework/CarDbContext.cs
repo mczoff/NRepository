@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 
 namespace NRepository.DemoEntityFramework
 {
@@ -13,7 +8,6 @@ namespace NRepository.DemoEntityFramework
         public CarDbContext()
             : base(@"Server=(localdb)\MSSQLLocaldb;Database=CarDb;")
         {
-
         }
 
         public DbSet<CarEntity> Cars { get; set; }

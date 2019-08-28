@@ -8,6 +8,10 @@ namespace NRepository.Abstractions.Core
 {
     public interface IRepositoryClassBuilder
     {
+        List<string> RequiredAssemblies { get; set; }
+
+        IRepositoryContractProvider ContractProvider { get; set; }
+
         TRepository CreateRepositoryInstance<TRepository>(object repositorySource);
     }
 }

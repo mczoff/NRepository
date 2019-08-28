@@ -1,24 +1,17 @@
 ﻿using NRepository.Abstractions.Core;
 using NRepository.Attributes;
-using NRepository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace NRepository.Core
+namespace NRepository.Models
 {
-    public abstract class RepositoryClassBuilder : IRepositoryClassBuilder
+    public class DefaultRepositoryContractProvider
+        : IRepositoryContractProvider
     {
-        public List<string> RequiredAssemblies { get; set; }
-        protected RepositoryClassBuilder()
-        {
-            var fullpathNRepositoryAssembly = Assembly.Load("NRepository").Modules.First().FullyQualifiedName;
-
-            RequiredAssemblies = new List<string> { fullpathNRepositoryAssembly, "System.Runtime.dll" };
-        }
-        public abstract TRepository CreateRepositoryInstance<TRepository>(object repositorySource);
-
         public RepositoryContract GenerateRepositoryContract(Type[] typeInterfaces)
         {
             RepositoryContract repositoryContract = new RepositoryContract();

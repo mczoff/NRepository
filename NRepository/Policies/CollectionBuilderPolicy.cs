@@ -13,7 +13,7 @@ namespace NRepository.Policies
     public class CollectionPolicy
         : IRepositoryPolicy
     {
-        public RepositoryClassBuilder GetClassBuilder()
+        public IRepositoryClassBuilder GetClassBuilder()
             => new CollectionRepositoryClassBuilder();
     }
 }
