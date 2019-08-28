@@ -4,6 +4,7 @@
 <#@ import namespace="System.Text" #>
 <#@ parameter name="Params" type="NRepository.EntityFramework.Params.EntityFrameworkRepositoryTemplateParams" #>
 using System.Linq;
+using System.Data.Entity;
 
 namespace <#=Params.NameSpace#>
 {
@@ -25,6 +26,18 @@ namespace <#=Params.NameSpace#>
 		public <#=Params.FullNameModel#>[] Select()
 		{
 			 return RepositorySource.DbSet.ToArray();
+		}
+		<# } #>
+
+		<# if(Params.Contract.IsSelectAsync) { #>
+		public async System.Threading.Tasks.Task<<#=Params.FullNameModel#>> SelectAsync(<#=Params.KeyType#> key)
+		{
+			return await RepositorySource.DbSet.FirstOrDefaultAsync(t => t.<#=Params.KeyName#> == key);
+		}
+
+		public async System.Threading.Tasks.Task<<#=Params.FullNameModel#>[]> SelectAsync()
+		{
+			return await RepositorySource.DbSet.ToArrayAsync();
 		}
 		<# } #>
 
@@ -50,12 +63,45 @@ namespace <#=Params.NameSpace#>
 		}
 		<# } #>
 
+		<# if(Params.Contract.IsDeleteAsync) { #>
+		public async System.Threading.Tasks.Task DeleteAsync(<#=Params.KeyType#> key)
+		{
+			var item = await RepositorySource.DbSet.FirstOrDefaultAsync(t => t.<#=Params.KeyName#> == key);
+
+			if(item == null)
+				throw new System.ArgumentException("Cant delete model with key " + key + ". Not found");
+
+			await DeleteAsync(item);
+		}
+
+		public async System.Threading.Tasks.Task DeleteAsync(<#=Params.FullNameModel#> model)
+		{
+			if(model == null)
+				throw new System.ArgumentNullException("Model was null");
+
+			RepositorySource.DbSet.Remove(model);
+
+			await RepositorySource.DatabaseСontext.SaveChangesAsync();
+		}
+		<# } #>
+
 		<# if(Params.Contract.IsCreate) { #>
 		public <#=Params.KeyType#> Create(<#=Params.FullNameModel#> model)
 		{
 			var item = RepositorySource.DbSet.Add(model);
 
 			RepositorySource.DatabaseСontext.SaveChanges();
+
+			return item.<#=Params.KeyName#>;
+		}
+		<# } #>
+
+		<# if(Params.Contract.IsCreateAsync) { #>
+		public async System.Threading.Tasks.Task<<#=Params.KeyType#>> CreateAsync(<#=Params.FullNameModel#> model)
+		{
+			var item = RepositorySource.DbSet.Add(model);
+
+			await RepositorySource.DatabaseСontext.SaveChangesAsync();
 
 			return item.<#=Params.KeyName#>;
 		}
@@ -74,5 +120,19 @@ namespace <#=Params.NameSpace#>
 			return model.<#=Params.KeyName#>;
 		}
 		<# } #>	
+
+		<# if(Params.Contract.IsUpdateAsync) { #>
+		public async System.Threading.Tasks.Task<<#=Params.KeyType#>> UpdateAsync(<#=Params.FullNameModel#> model)
+		{
+			if(model == null)
+				throw new System.ArgumentException("Cant update model with key " + model.<#=Params.KeyName#> + ". Not found");
+
+			RepositorySource.DatabaseСontext.Entry(model).State = System.Data.Entity.EntityState.Modified;
+			
+			await RepositorySource.DatabaseСontext.SaveChangesAsync();
+
+			return model.<#=Params.KeyName#>;
+		}
+		<# } #>
 	}
 }
