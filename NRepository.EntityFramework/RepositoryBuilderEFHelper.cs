@@ -16,13 +16,5 @@ namespace NRepository.EntityFramework
 
             return repositoryBuilder;
         }
-
-        public static IRepositoryBuilder SetSource<TModel, TEntity>(this IRepositoryBuilder repositoryBuilder, EntityFrameworkRepositoryTransferSource<TModel, TEntity> repositorySource)
-            where TEntity : class
-        {
-            repositoryBuilder.RepositorySource = repositorySource;
-
-            return repositoryBuilder;
-        }
     }
 }

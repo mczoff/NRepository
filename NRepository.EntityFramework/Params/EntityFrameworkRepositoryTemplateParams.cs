@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NRepository.EntityFramework.Params
 {
-    public class EntityFrameworkRepositoryTransferTemplateParams
+    public class EntityFrameworkRepositoryTemplateParams
         : IRepositoryTemplateParams
     {
         public string Name { get; set ; }
@@ -17,9 +17,6 @@ namespace NRepository.EntityFramework.Params
         public string FullNameModel { get; set; }
         public string KeyName { get; set; }
         public string KeyType { get; set; }
-        public string FullNameEntity { get; set; }
-        public string KeyEntityName { get; set; }
-        public string KeyEntityType { get; set; }
         public RepositoryContract Contract { get; set; }
     }
 }

@@ -1,0 +1,78 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ parameter name="Params" type="NRepository.EntityFramework.Params.EntityFrameworkRepositoryTemplateParams" #>
+using System.Linq;
+
+namespace <#=Params.NameSpace#>
+{
+	public class <#=Params.Name#> : <#=Params.Interface#>
+	{
+		public <#=Params.Name#>(NRepository.EntityFramework.Core.EntityFrameworkRepositorySource<<#=Params.FullNameModel#>> repositorySource)
+		{
+			RepositorySource = repositorySource;
+		}
+
+		public NRepository.EntityFramework.Core.EntityFrameworkRepositorySource<<#=Params.FullNameModel#>> RepositorySource { get; private set; }
+
+		<# if(Params.Contract.IsSelect) { #>
+		public <#=Params.FullNameModel#> Select(<#=Params.KeyType#> key)
+		{
+			 return RepositorySource.DbSet.FirstOrDefault(t => t.<#=Params.KeyName#> == key);
+		}
+
+		public <#=Params.FullNameModel#>[] Select()
+		{
+			 return RepositorySource.DbSet.ToArray();
+		}
+		<# } #>
+
+		<# if(Params.Contract.IsDelete) { #>
+		public void Delete(<#=Params.KeyType#> key)
+		{
+			var item = RepositorySource.DbSet.Find(key);
+
+			if(item == null)
+				throw new System.ArgumentNullException("Item for delete not found");
+
+			Delete(item);
+		}
+
+		public void Delete(<#=Params.FullNameModel#> model)
+		{
+			if(model == null)
+				throw new System.ArgumentNullException("Model was null");
+
+			RepositorySource.DbSet.Remove(model);
+
+			RepositorySource.DatabaseСontext.SaveChanges();
+		}
+		<# } #>
+
+		<# if(Params.Contract.IsCreate) { #>
+		public <#=Params.KeyType#> Create(<#=Params.FullNameModel#> model)
+		{
+			var item = RepositorySource.DbSet.Add(model);
+
+			RepositorySource.DatabaseСontext.SaveChanges();
+
+			return item.<#=Params.KeyName#>;
+		}
+		<# } #>
+
+		<# if(Params.Contract.IsUpdate) { #>
+		public <#=Params.KeyType#> Update(<#=Params.FullNameModel#> model)
+		{
+			if(model == null)
+				throw new System.ArgumentException("Cant update model with key " + model.<#=Params.KeyName#> + ". Not found");
+
+			RepositorySource.DatabaseСontext.Entry(model).State = System.Data.Entity.EntityState.Modified;
+			
+			RepositorySource.DatabaseСontext.SaveChanges();
+
+			return model.<#=Params.KeyName#>;
+		}
+		<# } #>	
+	}
+}

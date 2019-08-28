@@ -50,17 +50,14 @@
   <ItemGroup>
     <Compile Include="Core\EntityFrameworkRepositoryClassBuilder.cs" />
     <Compile Include="Core\EntityFrameworkRepositorySource.cs" />
-    <Compile Include="Core\EntityFrameworkRepositoryTransferSource.cs" />
-    <Compile Include="Core\EntityFrameworkRepositoryTransferClassBuilder.cs" />
-    <Compile Include="Params\EntityFrameworkRepositoryTransferTemplateParams.cs" />
+    <Compile Include="Params\EntityFrameworkRepositoryTemplateParams.cs" />
     <Compile Include="Policies\EntityFrameworkBuilderPolicy.cs" />
-    <Compile Include="Policies\EntityFrameworkBuilderTransferPolicy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryBuilderEFHelper.cs" />
-    <Compile Include="Templates\EntityFrameworkRepositoryTranferTemplate.cs">
+    <Compile Include="Templates\EntityFrameworkRepositoryTemplate.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EntityFrameworkRepositoryTranferTemplate.tt</DependentUpon>
+      <DependentUpon>EntityFrameworkRepositoryTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -75,11 +72,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstractions\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Templates\EntityFrameworkRepositoryTranferTemplate.tt">
+    <Content Include="Templates\EntityFrameworkRepositoryTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>EntityFrameworkRepositoryTranferTemplate.cs</LastGenOutput>
+      <LastGenOutput>EntityFrameworkRepositoryTemplate.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

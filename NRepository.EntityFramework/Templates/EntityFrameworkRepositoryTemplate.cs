@@ -17,9 +17,9 @@ namespace NRepository.EntityFramework.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
+    #line 1 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class EntityFrameworkRepositoryTranferTemplate : EntityFrameworkRepositoryTranferTemplateBase
+    public partial class EntityFrameworkRepositoryTemplate : EntityFrameworkRepositoryTemplateBase
     {
 #line hidden
         /// <summary>
@@ -27,110 +27,216 @@ namespace NRepository.EntityFramework.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System.Data.Entity;\r\n\r\nnamespace ");
+            this.Write("using System.Linq;\r\n\r\nnamespace ");
             
-            #line 8 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
+            #line 8 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.NameSpace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n\tpublic class ");
             
-            #line 10 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
+            #line 10 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.Name));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 10 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
+            #line 10 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.Interface));
             
             #line default
             #line hidden
             this.Write("\r\n\t{\r\n\t\tpublic ");
             
-            #line 12 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
+            #line 12 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.Name));
             
             #line default
             #line hidden
-            this.Write("(NRepository.EntityFramework.Core.EntityFrameworkRepositoryTransferSource<");
+            this.Write("(NRepository.EntityFramework.Core.EntityFrameworkRepositorySource<");
             
-            #line 12 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
+            #line 12 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
-            
-            #line default
-            #line hidden
-            this.Write(", ");
-            
-            #line 12 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameEntity));
             
             #line default
             #line hidden
             this.Write("> repositorySource)\r\n\t\t{\r\n\t\t\tRepositorySource = repositorySource;\r\n\t\t}\r\n\r\n\t\tpubli" +
-                    "c NRepository.EntityFramework.Core.EntityFrameworkRepositoryTransferSource<");
+                    "c NRepository.EntityFramework.Core.EntityFrameworkRepositorySource<");
             
-            #line 17 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
+            #line 17 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
-            
-            #line default
-            #line hidden
-            this.Write(", ");
-            
-            #line 17 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameEntity));
             
             #line default
             #line hidden
             this.Write("> RepositorySource { get; private set; }\r\n\r\n\t\t");
             
-            #line 19 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
+            #line 19 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
  if(Params.Contract.IsSelect) { 
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 20 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
+            #line 20 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
             #line hidden
             this.Write(" Select(");
             
-            #line 20 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
+            #line 20 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
             
             #line default
             #line hidden
-            this.Write(" key)\r\n\t\t{\r\n\t\t\treturn null;\r\n\t\t}\r\n\r\n\t\tpublic ");
+            this.Write(" key)\r\n\t\t{\r\n\t\t\t return RepositorySource.DbSet.FirstOrDefault(t => t.");
             
-            #line 25 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
+            #line 22 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" == key);\r\n\t\t}\r\n\r\n\t\tpublic ");
+            
+            #line 25 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
             #line hidden
-            this.Write("[] Select()\r\n\t\t{\r\n\t\t\treturn null;\r\n\t\t}\r\n\t\t");
+            this.Write("[] Select()\r\n\t\t{\r\n\t\t\t return RepositorySource.DbSet.ToArray();\r\n\t\t}\r\n\t\t");
             
-            #line 29 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
+            #line 29 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\t}\r\n}");
+            this.Write("\r\n\t\t");
+            
+            #line 31 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ if(Params.Contract.IsDelete) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic void Delete(");
+            
+            #line 32 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
+            
+            #line default
+            #line hidden
+            this.Write(" key)\r\n\t\t{\r\n\t\t\tvar item = RepositorySource.DbSet.Find(key);\r\n\r\n\t\t\tif(item == null" +
+                    ")\r\n\t\t\t\tthrow new System.ArgumentNullException(\"Item for delete not found\");\r\n\r\n\t" +
+                    "\t\tDelete(item);\r\n\t\t}\r\n\r\n\t\tpublic void Delete(");
+            
+            #line 42 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write(" model)\r\n\t\t{\r\n\t\t\tif(model == null)\r\n\t\t\t\tthrow new System.ArgumentNullException(\"M" +
+                    "odel was null\");\r\n\r\n\t\t\tRepositorySource.DbSet.Remove(model);\r\n\r\n\t\t\tRepositorySou" +
+                    "rce.DatabaseСontext.SaveChanges();\r\n\t\t}\r\n\t\t");
+            
+            #line 51 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 53 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ if(Params.Contract.IsCreate) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ");
+            
+            #line 54 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
+            
+            #line default
+            #line hidden
+            this.Write(" Create(");
+            
+            #line 54 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = RepositorySource.DbSet.Add(model);\r\n\r\n\t\t\tRepositorySo" +
+                    "urce.DatabaseСontext.SaveChanges();\r\n\r\n\t\t\treturn item.");
+            
+            #line 60 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n\t\t}\r\n\t\t");
+            
+            #line 62 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 64 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ if(Params.Contract.IsUpdate) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ");
+            
+            #line 65 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
+            
+            #line default
+            #line hidden
+            this.Write(" Update(");
+            
+            #line 65 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write(" model)\r\n\t\t{\r\n\t\t\tif(model == null)\r\n\t\t\t\tthrow new System.ArgumentException(\"Cant " +
+                    "update model with key \" + model.");
+            
+            #line 68 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" + \". Not found\");\r\n\r\n\t\t\tRepositorySource.DatabaseСontext.Entry(model).State = Sy" +
+                    "stem.Data.Entity.EntityState.Modified;\r\n\t\t\t\r\n\t\t\tRepositorySource.DatabaseСontext" +
+                    ".SaveChanges();\r\n\r\n\t\t\treturn model.");
+            
+            #line 74 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n\t\t}\r\n\t\t");
+            
+            #line 76 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\t\r\n\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 1 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTranferTemplate.tt"
+        #line 1 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
 
-private global::NRepository.EntityFramework.Params.EntityFrameworkRepositoryTransferTemplateParams _ParamsField;
+private global::NRepository.EntityFramework.Params.EntityFrameworkRepositoryTemplateParams _ParamsField;
 
 /// <summary>
 /// Access the Params parameter of the template.
 /// </summary>
-private global::NRepository.EntityFramework.Params.EntityFrameworkRepositoryTransferTemplateParams Params
+private global::NRepository.EntityFramework.Params.EntityFrameworkRepositoryTemplateParams Params
 {
     get
     {
@@ -149,7 +255,7 @@ public virtual void Initialize()
 bool ParamsValueAcquired = false;
 if (this.Session.ContainsKey("Params"))
 {
-    this._ParamsField = ((global::NRepository.EntityFramework.Params.EntityFrameworkRepositoryTransferTemplateParams)(this.Session["Params"]));
+    this._ParamsField = ((global::NRepository.EntityFramework.Params.EntityFrameworkRepositoryTemplateParams)(this.Session["Params"]));
     ParamsValueAcquired = true;
 }
 if ((ParamsValueAcquired == false))
@@ -157,7 +263,7 @@ if ((ParamsValueAcquired == false))
     object data = global::System.Runtime.Remoting.Messaging.CallContext.LogicalGetData("Params");
     if ((data != null))
     {
-        this._ParamsField = ((global::NRepository.EntityFramework.Params.EntityFrameworkRepositoryTransferTemplateParams)(data));
+        this._ParamsField = ((global::NRepository.EntityFramework.Params.EntityFrameworkRepositoryTemplateParams)(data));
     }
 }
 
@@ -178,7 +284,7 @@ if ((ParamsValueAcquired == false))
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public class EntityFrameworkRepositoryTranferTemplateBase
+    public class EntityFrameworkRepositoryTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

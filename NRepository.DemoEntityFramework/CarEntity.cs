@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using NRepository.Attributes;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NRepository.DemoEntityFramework
 {
+    [Table("Cars")]
     public class CarEntity
     {
+        [RepositoryKey]
         [Key]
         public int Id { get; set; }
 

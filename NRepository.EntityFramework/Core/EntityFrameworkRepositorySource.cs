@@ -8,10 +8,13 @@ namespace NRepository.EntityFramework.Core
         where TModel : class
     {
         public IDbSet<TModel> DbSet { get; set; }
+        public DbContext DatabaseСontext { get; set; }
 
-        public EntityFrameworkRepositorySource(IDbSet<TModel> dbSet)
+        public EntityFrameworkRepositorySource(DbContext dbcontext, IDbSet<TModel> dbSet)
         {
+            DatabaseСontext = dbcontext ?? throw new ArgumentNullException("Initialize dbcontext was null");
             DbSet = dbSet ?? throw new ArgumentNullException("Initialize dbset was null");
         }
     }
 }
+

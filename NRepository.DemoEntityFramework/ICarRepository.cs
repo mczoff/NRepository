@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace NRepository.DemoEntityFramework
 {
-    public interface ICarRepository
-        : ISelectRepository<Car, int>
+    public interface ICarRepository : ISelectRepository<CarEntity, int>, IDeleteRepository<CarEntity, int>, IUpdateRepository<CarEntity, int>, ICreateRepository<CarEntity, int>
+
     {
     }
 }
