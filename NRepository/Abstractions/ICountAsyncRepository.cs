@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace NRepository.Abstractions
 {
+    /// <summary>
+    /// Interface return count rows in container. Async implementation
+    /// </summary>
     public interface ICountAsyncRepository
     {
         Task CountAsync();

@@ -1,14 +1,18 @@
 ﻿using NRepository.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NRepository.Abstractions.Core
 {
+    /// <summary>
+    /// Interface analyze repository interfaces
+    /// </summary>
     public interface IRepositoryContractProvider
     {
+        /// <summary>
+        /// Generate RepositoryContract 
+        /// </summary>
+        /// <param name="typeInterfaces"></param>
+        /// <returns cref="RepositoryContract">Contract</returns>
         RepositoryContract GenerateRepositoryContract(Type[] typeInterfaces);
     }
 }

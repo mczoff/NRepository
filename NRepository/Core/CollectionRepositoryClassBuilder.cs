@@ -30,7 +30,7 @@ namespace NRepository.Core
             };
         }
 
-        //TODO: Check type RepositoryId and TKey
+
         public TRepository CreateRepositoryInstance<TRepository>(object repositorySource)
         {
             var template = new CollectionRepositoryTemplate();

@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NRepository.Abstractions
+﻿namespace NRepository.Abstractions
 {
+    /// <summary>
+    /// Interface return count rows in container.
+    /// </summary>
     public interface ICountRepository
     {
         void Count();
