@@ -10,7 +10,7 @@ namespace NRepository.DemoEntityFramework
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             IRepositoryBuilder repositoryBuilder = new RepositoryBuilder();
 
@@ -20,13 +20,7 @@ namespace NRepository.DemoEntityFramework
                 .SetSource(new EntityFrameworkRepositorySource<CarEntity>(cardbContext, cardbContext.Cars))
                 .Build<ICarRepository>();
 
-            var car = repository.Select(1);
-
-            car.Value = "LADA";
-
-            repository.Update(car);
-
-            var cars = repository.Select();
+            var cars = await repository.SelectAsync();
         }
     }
 }

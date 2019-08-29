@@ -27,37 +27,37 @@ namespace NRepository.EntityFramework.Templates
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("using System.Linq;\r\n\r\nnamespace ");
+            this.Write("using System.Linq;\r\nusing System.Data.Entity;\r\n\r\nnamespace ");
             
-            #line 8 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 9 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.NameSpace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n\tpublic class ");
             
-            #line 10 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 11 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.Name));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 10 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 11 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.Interface));
             
             #line default
             #line hidden
             this.Write("\r\n\t{\r\n\t\tpublic ");
             
-            #line 12 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 13 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.Name));
             
             #line default
             #line hidden
             this.Write("(NRepository.EntityFramework.Core.EntityFrameworkRepositorySource<");
             
-            #line 12 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 13 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
@@ -65,63 +65,106 @@ namespace NRepository.EntityFramework.Templates
             this.Write("> repositorySource)\r\n\t\t{\r\n\t\t\tRepositorySource = repositorySource;\r\n\t\t}\r\n\r\n\t\tpubli" +
                     "c NRepository.EntityFramework.Core.EntityFrameworkRepositorySource<");
             
-            #line 17 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 18 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
             #line hidden
             this.Write("> RepositorySource { get; private set; }\r\n\r\n\t\t");
             
-            #line 19 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 20 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
  if(Params.Contract.IsSelect) { 
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 20 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 21 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
             #line hidden
             this.Write(" Select(");
             
-            #line 20 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 21 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
             
             #line default
             #line hidden
             this.Write(" key)\r\n\t\t{\r\n\t\t\t return RepositorySource.DbSet.FirstOrDefault(t => t.");
             
-            #line 22 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 23 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
             
             #line default
             #line hidden
             this.Write(" == key);\r\n\t\t}\r\n\r\n\t\tpublic ");
             
-            #line 25 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 26 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
             #line hidden
             this.Write("[] Select()\r\n\t\t{\r\n\t\t\t return RepositorySource.DbSet.ToArray();\r\n\t\t}\r\n\t\t");
             
-            #line 29 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 30 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\r\n\t\t");
             
-            #line 31 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 32 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ if(Params.Contract.IsSelectAsync) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic async System.Threading.Tasks.Task<");
+            
+            #line 33 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write("> SelectAsync(");
+            
+            #line 33 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
+            
+            #line default
+            #line hidden
+            this.Write(" key)\r\n\t\t{\r\n\t\t\treturn await RepositorySource.DbSet.FirstOrDefaultAsync(t => t.");
+            
+            #line 35 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" == key);\r\n\t\t}\r\n\r\n\t\tpublic async System.Threading.Tasks.Task<");
+            
+            #line 38 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write("[]> SelectAsync()\r\n\t\t{\r\n\t\t\treturn await RepositorySource.DbSet.ToArrayAsync();\r\n\t" +
+                    "\t}\r\n\t\t");
+            
+            #line 42 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 44 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
  if(Params.Contract.IsDelete) { 
             
             #line default
             #line hidden
             this.Write("\t\tpublic void Delete(");
             
-            #line 32 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 45 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
             
             #line default
@@ -130,7 +173,7 @@ namespace NRepository.EntityFramework.Templates
                     ")\r\n\t\t\t\tthrow new System.ArgumentNullException(\"Item for delete not found\");\r\n\r\n\t" +
                     "\t\tDelete(item);\r\n\t\t}\r\n\r\n\t\tpublic void Delete(");
             
-            #line 42 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 55 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
@@ -139,28 +182,68 @@ namespace NRepository.EntityFramework.Templates
                     "odel was null\");\r\n\r\n\t\t\tRepositorySource.DbSet.Remove(model);\r\n\r\n\t\t\tRepositorySou" +
                     "rce.DatabaseСontext.SaveChanges();\r\n\t\t}\r\n\t\t");
             
-            #line 51 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 64 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\r\n\t\t");
             
-            #line 53 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 66 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ if(Params.Contract.IsDeleteAsync) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic async System.Threading.Tasks.Task DeleteAsync(");
+            
+            #line 67 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
+            
+            #line default
+            #line hidden
+            this.Write(" key)\r\n\t\t{\r\n\t\t\tvar item = await RepositorySource.DbSet.FirstOrDefaultAsync(t => t" +
+                    ".");
+            
+            #line 69 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" == key);\r\n\r\n\t\t\tif(item == null)\r\n\t\t\t\tthrow new System.ArgumentException(\"Cant de" +
+                    "lete model with key \" + key + \". Not found\");\r\n\r\n\t\t\tawait DeleteAsync(item);\r\n\t\t" +
+                    "}\r\n\r\n\t\tpublic async System.Threading.Tasks.Task DeleteAsync(");
+            
+            #line 77 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write(" model)\r\n\t\t{\r\n\t\t\tif(model == null)\r\n\t\t\t\tthrow new System.ArgumentNullException(\"M" +
+                    "odel was null\");\r\n\r\n\t\t\tRepositorySource.DbSet.Remove(model);\r\n\r\n\t\t\tawait Reposit" +
+                    "orySource.DatabaseСontext.SaveChangesAsync();\r\n\t\t}\r\n\t\t");
+            
+            #line 86 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 88 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
  if(Params.Contract.IsCreate) { 
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 54 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 89 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
             
             #line default
             #line hidden
             this.Write(" Create(");
             
-            #line 54 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 89 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
@@ -168,35 +251,71 @@ namespace NRepository.EntityFramework.Templates
             this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = RepositorySource.DbSet.Add(model);\r\n\r\n\t\t\tRepositorySo" +
                     "urce.DatabaseСontext.SaveChanges();\r\n\r\n\t\t\treturn item.");
             
-            #line 60 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 95 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
             
             #line default
             #line hidden
             this.Write(";\r\n\t\t}\r\n\t\t");
             
-            #line 62 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 97 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\r\n\t\t");
             
-            #line 64 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 99 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ if(Params.Contract.IsCreateAsync) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic async System.Threading.Tasks.Task<");
+            
+            #line 100 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
+            
+            #line default
+            #line hidden
+            this.Write("> CreateAsync(");
+            
+            #line 100 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = RepositorySource.DbSet.Add(model);\r\n\r\n\t\t\tawait Reposi" +
+                    "torySource.DatabaseСontext.SaveChangesAsync();\r\n\r\n\t\t\treturn item.");
+            
+            #line 106 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n\t\t}\r\n\t\t");
+            
+            #line 108 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 110 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
  if(Params.Contract.IsUpdate) { 
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 65 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 111 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
             
             #line default
             #line hidden
             this.Write(" Update(");
             
-            #line 65 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 111 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
             
             #line default
@@ -204,7 +323,7 @@ namespace NRepository.EntityFramework.Templates
             this.Write(" model)\r\n\t\t{\r\n\t\t\tif(model == null)\r\n\t\t\t\tthrow new System.ArgumentException(\"Cant " +
                     "update model with key \" + model.");
             
-            #line 68 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 114 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
             
             #line default
@@ -213,19 +332,64 @@ namespace NRepository.EntityFramework.Templates
                     "stem.Data.Entity.EntityState.Modified;\r\n\t\t\t\r\n\t\t\tRepositorySource.DatabaseСontext" +
                     ".SaveChanges();\r\n\r\n\t\t\treturn model.");
             
-            #line 74 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 120 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
             
             #line default
             #line hidden
             this.Write(";\r\n\t\t}\r\n\t\t");
             
-            #line 76 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            #line 122 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\t\r\n\t}\r\n}");
+            this.Write("\t\r\n\r\n\t\t");
+            
+            #line 124 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ if(Params.Contract.IsUpdateAsync) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic async System.Threading.Tasks.Task<");
+            
+            #line 125 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyType));
+            
+            #line default
+            #line hidden
+            this.Write("> UpdateAsync(");
+            
+            #line 125 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write(" model)\r\n\t\t{\r\n\t\t\tif(model == null)\r\n\t\t\t\tthrow new System.ArgumentException(\"Cant " +
+                    "update model with key \" + model.");
+            
+            #line 128 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(" + \". Not found\");\r\n\r\n\t\t\tRepositorySource.DatabaseСontext.Entry(model).State = Sy" +
+                    "stem.Data.Entity.EntityState.Modified;\r\n\t\t\t\r\n\t\t\tawait RepositorySource.DatabaseС" +
+                    "ontext.SaveChangesAsync();\r\n\r\n\t\t\treturn model.");
+            
+            #line 134 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n\t\t}\r\n\t\t");
+            
+            #line 136 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         
