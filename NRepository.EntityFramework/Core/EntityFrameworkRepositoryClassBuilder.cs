@@ -46,7 +46,7 @@ namespace NRepository.EntityFramework.Core
             var keyModel = repositorySource.GetType().GenericTypeArguments[0].GetProperties().FirstOrDefault(t => t.GetCustomAttribute<RepositoryKeyAttribute>() != null);
 
             if (keyModel == null)
-                throw new Exception();
+                throw new ArgumentException("Cant find attribute [RepositoryKey] in model");
 
             EntityFrameworkRepositoryTemplateParams entityFrameworkRepositoryTransferTemplateParams = new EntityFrameworkRepositoryTemplateParams
             {

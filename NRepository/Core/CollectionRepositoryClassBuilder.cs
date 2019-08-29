@@ -22,9 +22,12 @@ namespace NRepository.Core
         {
             ContractProvider = new DefaultRepositoryContractProvider();
 
-            RequiredAssemblies = new List<string> { "NRepository", "System.Runtime" };
-
-            RequiredAssemblies.Add("System.Core.dll");
+            RequiredAssemblies = new List<string>
+            {
+                "NRepository",
+                "System.Runtime",
+                "System.Core"
+            };
         }
 
         //TODO: Check type RepositoryId and TKey
@@ -37,7 +40,7 @@ namespace NRepository.Core
             var key = repositorySource.GetType().GenericTypeArguments[0].GetProperties().FirstOrDefault(t => t.GetCustomAttribute<RepositoryKeyAttribute>() != null);
 
             if (key == null)
-                throw new Exception();
+                throw new ArgumentException("Cant find attribute [RepositoryKey] in model");
 
             CollectionRepositoryTemplateParams enumerableRepositoryTemplateParams = new CollectionRepositoryTemplateParams
             {
@@ -67,7 +70,7 @@ namespace NRepository.Core
 
                 var assemblyModule = repositorySource.GetType().GenericTypeArguments[0].Assembly.Modules.First();
 
-                compileParams.ReferencedAssemblies.AddRange(RequiredAssemblies.Concat(new[] { assemblyModule.FullyQualifiedName }).ToArray());
+                compileParams.ReferencedAssemblies.AddRange(RequiredAssemblies.Select(t => Assembly.LoadWithPartialName(t).Modules.First().FullyQualifiedName).Concat(new[] { assemblyModule.FullyQualifiedName }).ToArray());
 
                 var result = compiler.CompileAssemblyFromSource(compileParams, code);
 
