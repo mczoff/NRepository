@@ -507,6 +507,50 @@ namespace NRepository.Templates
             
             #line default
             #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 153 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsPagination) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ");
+            
+            #line 154 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write("[] SelectPage(int page, int count)\r\n\t\t{\r\n\t\t\treturn RepositorySource.Collection.Sk" +
+                    "ip(page * count).Take(count).ToArray();\r\n\t\t}\r\n\t\t");
+            
+            #line 158 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 160 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsPaginationAsync) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic async System.Threading.Tasks.Task<");
+            
+            #line 161 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write("[]> SelectPageAsync(int page, int count)\r\n\t\t{\r\n\t\t\treturn RepositorySource.Collect" +
+                    "ion.Skip(page * count).Take(count).ToArray();\r\n\t\t}\r\n\t\t");
+            
+            #line 165 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
             this.Write("\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }

@@ -12,6 +12,7 @@ namespace NRepository.DemoCollection
           IDeleteRepository<Song, int>, 
           ICreateRepository<Song, int>, 
           IUpdateRepository<Song, int>,
+          IPaginationRepository<Song>,
           ICountAsyncRepository
     {
     }

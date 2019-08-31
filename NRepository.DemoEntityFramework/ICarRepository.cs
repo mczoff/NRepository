@@ -12,6 +12,7 @@ namespace NRepository.DemoEntityFramework
           IDeleteAsyncRepository<CarEntity, int>, 
           IUpdateAsyncRepository<CarEntity, int>, 
           ICreateAsyncRepository<CarEntity, int>,
+          IPaginationAsyncRepository<CarEntity>,
           ICountRepository
     {
     }

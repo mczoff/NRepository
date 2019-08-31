@@ -418,7 +418,65 @@ namespace NRepository.EntityFramework.Templates
             
             #line default
             #line hidden
-            this.Write("\t\r\n\t}\r\n}");
+            this.Write("\t\r\n\r\n\t\t");
+            
+            #line 152 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ if(Params.Contract.IsPagination) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ");
+            
+            #line 153 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write("[] SelectPage(int page, int count)\r\n\t\t{\r\n\t\t\treturn RepositorySource.DbSet.OrderBy" +
+                    "(t => t.");
+            
+            #line 155 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(").Skip(page * count).Take(count).ToArray();\r\n\t\t}\r\n\t\t");
+            
+            #line 157 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 159 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ if(Params.Contract.IsPaginationAsync) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic async System.Threading.Tasks.Task<");
+            
+            #line 160 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write("[]> SelectPageAsync(int page, int count)\r\n\t\t{\r\n\t\t\treturn await RepositorySource.D" +
+                    "bSet.OrderBy(t => t.");
+            
+            #line 162 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
+            
+            #line default
+            #line hidden
+            this.Write(").Skip(page * count).Take(count).ToArrayAsync();\r\n\t\t}\r\n\t\t");
+            
+            #line 164 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         

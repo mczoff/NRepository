@@ -6,7 +6,7 @@ namespace NRepository.Abstractions
     /// Pagination interface.
     /// </summary>
     /// <typeparam name="TModel">Model repository</typeparam>
-    [RepositoryContract("IsPaginationAsync")]
+    [RepositoryContract("IsPagination")]
     public interface IPaginationRepository<TModel>
     {
         TModel[] SelectPage(int page, int count);

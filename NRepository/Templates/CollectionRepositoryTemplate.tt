@@ -149,5 +149,19 @@ namespace <#=Params.NameSpace#>
 			return RepositorySource.Collection.Count();
 		}
 		<# } #>
+
+		<# if(Params.Contract.IsPagination) { #>
+		public <#=Params.FullNameModel#>[] SelectPage(int page, int count)
+		{
+			return RepositorySource.Collection.Skip(page * count).Take(count).ToArray();
+		}
+		<# } #>
+
+		<# if(Params.Contract.IsPaginationAsync) { #>
+		public async System.Threading.Tasks.Task<<#=Params.FullNameModel#>[]> SelectPageAsync(int page, int count)
+		{
+			return RepositorySource.Collection.Skip(page * count).Take(count).ToArray();
+		}
+		<# } #>
 	}
 }
