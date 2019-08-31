@@ -18,24 +18,24 @@ namespace <#=Params.NameSpace#>
 		<# if(Params.Contract.IsSelect) { #>
 		public <#=Params.FullNameModel#> Select(<#=Params.KeyType#> key)
 		{
-			return Enumerable.FirstOrDefault(RepositorySource.Collection, t => t.<#=Params.KeyName#> == key);
+			return RepositorySource.Collection.FirstOrDefault(t => t.<#=Params.KeyName#> == key);
 		}
 
 		public <#=Params.FullNameModel#>[] Select()
 		{
-			return Enumerable.ToArray(RepositorySource.Collection);
+			return RepositorySource.Collection.ToArray();
 		}
 		<# } #>
 
 		<# if(Params.Contract.IsSelectAsync) { #>
 		public async System.Threading.Tasks.Task<<#=Params.FullNameModel#>> SelectAsync(<#=Params.KeyType#> key)
 		{
-			return Enumerable.FirstOrDefault(RepositorySource.Collection, t => t.<#=Params.KeyName#> == key);
+			return RepositorySource.Collection.FirstOrDefault(t => t.<#=Params.KeyName#> == key);
 		}
 
 		public async System.Threading.Tasks.Task<<#=Params.FullNameModel#>[]> SelectAsync()
 		{
-			return Enumerable.ToArray(RepositorySource.Collection);
+			return RepositorySource.Collection.ToArray();
 		}
 		<# } #>
 
@@ -79,7 +79,7 @@ namespace <#=Params.NameSpace#>
 		<# if(Params.Contract.IsCreate) { #>
 		public <#=Params.KeyType#> Create(<#=Params.FullNameModel#> model)
 		{
-			var item = Enumerable.FirstOrDefault(RepositorySource.Collection, t => t.<#=Params.KeyName#> == model.<#=Params.KeyName#>);
+			var item = RepositorySource.Collection.FirstOrDefault(t => t.<#=Params.KeyName#> == model.<#=Params.KeyName#>);
 
 			if(item != null)
 				throw new System.ArgumentException("Cant create model with key " + item.<#=Params.KeyName#> + ". Already exist");
@@ -93,7 +93,7 @@ namespace <#=Params.NameSpace#>
 		<# if(Params.Contract.IsCreateAsync) { #>
 		public async System.Threading.Tasks.Task<<#=Params.KeyType#>> CreateAsync(<#=Params.FullNameModel#> model)
 		{
-			var item = Enumerable.FirstOrDefault(RepositorySource.Collection, t => t.<#=Params.KeyName#> == model.<#=Params.KeyName#>);
+			var item = RepositorySource.Collection.FirstOrDefault(t => t.<#=Params.KeyName#> == model.<#=Params.KeyName#>);
 
 			if(item != null)
 				throw new System.ArgumentException("Cant create model with key " + item.<#=Params.KeyName#> + ". Already exist");
@@ -107,7 +107,7 @@ namespace <#=Params.NameSpace#>
 		<# if(Params.Contract.IsUpdate) { #>
 		public <#=Params.KeyType#> Update(<#=Params.FullNameModel#> model)
 		{
-			var item = Enumerable.FirstOrDefault(RepositorySource.Collection, t => t.<#=Params.KeyName#> == model.<#=Params.KeyName#>);
+			var item = RepositorySource.Collection.FirstOrDefault(t => t.<#=Params.KeyName#> == model.<#=Params.KeyName#>);
 
 			if(item == null)
 				throw new System.ArgumentException("Cant update model with key " + model.<#=Params.KeyName#> + ". Not found");
@@ -123,7 +123,7 @@ namespace <#=Params.NameSpace#>
 		<# if(Params.Contract.IsUpdateAsync) { #>
 		public async System.Threading.Tasks.Task<<#=Params.KeyType#>> UpdateAsync(<#=Params.FullNameModel#> model)
 		{
-			var item = Enumerable.FirstOrDefault(RepositorySource.Collection, t => t.<#=Params.KeyName#> == model.<#=Params.KeyName#>);
+			var item = RepositorySource.Collection.FirstOrDefault(t => t.<#=Params.KeyName#> == model.<#=Params.KeyName#>);
 
 			if(item == null)
 				throw new System.ArgumentException("Cant update model with key " + model.<#=Params.KeyName#> + ". Not found");

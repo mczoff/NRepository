@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\Core\IAssemblyLoader.cs" />
     <Compile Include="Abstractions\Core\IRepositoryClassBuilder.cs" />
     <Compile Include="Abstractions\Core\IRepositoryContractProvider.cs" />
     <Compile Include="Abstractions\Core\IRepositoryPolicy.cs" />
@@ -63,7 +62,6 @@
     <Compile Include="Core\CollectionRepositoryClassBuilder.cs" />
     <Compile Include="Factories\RepositoryFactory.cs" />
     <Compile Include="IRepositoryBuilder.cs" />
-    <Compile Include="Models\AssemblyLoader.cs" />
     <Compile Include="Models\DefaultRepositoryContractProvider.cs" />
     <Compile Include="Params\CollectionRepositoryTemplateParams.cs" />
     <Compile Include="Models\RepositoryContract.cs" />

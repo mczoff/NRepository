@@ -6,7 +6,7 @@ namespace NRepository.Abstractions.Core
     /// <summary>
     /// Interface analyze repository interfaces
     /// </summary>
-    internal interface IRepositoryContractProvider
+    public interface IRepositoryContractProvider
     {
         /// <summary>
         /// Generate RepositoryContract by using interfaces
