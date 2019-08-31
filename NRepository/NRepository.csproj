@@ -41,11 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstractions\Core\IAssemblyLoader.cs" />
     <Compile Include="Abstractions\Core\IRepositoryClassBuilder.cs" />
     <Compile Include="Abstractions\Core\IRepositoryContractProvider.cs" />
     <Compile Include="Abstractions\Core\IRepositoryPolicy.cs" />
-    <Compile Include="Abstractions\Core\IRepositorySource.cs" />
     <Compile Include="Abstractions\ICountAsyncRepository.cs" />
     <Compile Include="Abstractions\ICountRepository.cs" />
     <Compile Include="Abstractions\ICreateAsyncRepository.cs" />
@@ -53,6 +51,8 @@
     <Compile Include="Abstractions\IDeleteAsyncRepository.cs" />
     <Compile Include="Abstractions\IDeleteRepository.cs" />
     <Compile Include="Abstractions\Core\IRepositoryTemplateParams.cs" />
+    <Compile Include="Abstractions\IPaginationAsyncRepository.cs" />
+    <Compile Include="Abstractions\IPaginationRepository.cs" />
     <Compile Include="Abstractions\ISelectAsyncRepository.cs" />
     <Compile Include="Abstractions\ISelectRepository.cs" />
     <Compile Include="Abstractions\IUpdateAsyncRepository.cs" />
@@ -64,7 +64,6 @@
     <Compile Include="Core\CollectionRepositoryClassBuilder.cs" />
     <Compile Include="Factories\RepositoryFactory.cs" />
     <Compile Include="IRepositoryBuilder.cs" />
-    <Compile Include="Models\AssemblyLoader.cs" />
     <Compile Include="Models\DefaultRepositoryContractProvider.cs" />
     <Compile Include="Params\CollectionRepositoryTemplateParams.cs" />
     <Compile Include="Models\RepositoryContract.cs" />

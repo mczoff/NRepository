@@ -1,13 +1,11 @@
 ﻿using NRepository.Abstractions.Core;
 using NRepository.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NRepository.Params
 {
+    /// <summary>
+    /// Params for collection repository Template
+    /// </summary>
     public class CollectionRepositoryTemplateParams
         : IRepositoryTemplateParams
     {

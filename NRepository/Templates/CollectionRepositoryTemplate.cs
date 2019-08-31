@@ -90,8 +90,7 @@ namespace NRepository.Templates
             
             #line default
             #line hidden
-            this.Write(" key)\r\n\t\t{\r\n\t\t\treturn Enumerable.FirstOrDefault(RepositorySource.Collection, t =>" +
-                    " t.");
+            this.Write(" key)\r\n\t\t{\r\n\t\t\treturn RepositorySource.Collection.FirstOrDefault(t => t.");
             
             #line 21 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
@@ -105,8 +104,7 @@ namespace NRepository.Templates
             
             #line default
             #line hidden
-            this.Write("[] Select()\r\n\t\t{\r\n\t\t\treturn Enumerable.ToArray(RepositorySource.Collection);\r\n\t\t}" +
-                    "\r\n\t\t");
+            this.Write("[] Select()\r\n\t\t{\r\n\t\t\treturn RepositorySource.Collection.ToArray();\r\n\t\t}\r\n\t\t");
             
             #line 28 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
  } 
@@ -134,8 +132,7 @@ namespace NRepository.Templates
             
             #line default
             #line hidden
-            this.Write(" key)\r\n\t\t{\r\n\t\t\treturn Enumerable.FirstOrDefault(RepositorySource.Collection, t =>" +
-                    " t.");
+            this.Write(" key)\r\n\t\t{\r\n\t\t\treturn RepositorySource.Collection.FirstOrDefault(t => t.");
             
             #line 33 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
@@ -149,8 +146,8 @@ namespace NRepository.Templates
             
             #line default
             #line hidden
-            this.Write("[]> SelectAsync()\r\n\t\t{\r\n\t\t\treturn Enumerable.ToArray(RepositorySource.Collection)" +
-                    ";\r\n\t\t}\r\n\t\t");
+            this.Write("[]> SelectAsync()\r\n\t\t{\r\n\t\t\treturn RepositorySource.Collection.ToArray();\r\n\t\t}\r\n\t\t" +
+                    "");
             
             #line 40 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
  } 
@@ -269,8 +266,7 @@ namespace NRepository.Templates
             
             #line default
             #line hidden
-            this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = Enumerable.FirstOrDefault(RepositorySource.Collection" +
-                    ", t => t.");
+            this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = RepositorySource.Collection.FirstOrDefault(t => t.");
             
             #line 82 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
@@ -328,8 +324,7 @@ namespace NRepository.Templates
             
             #line default
             #line hidden
-            this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = Enumerable.FirstOrDefault(RepositorySource.Collection" +
-                    ", t => t.");
+            this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = RepositorySource.Collection.FirstOrDefault(t => t.");
             
             #line 96 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
@@ -387,8 +382,7 @@ namespace NRepository.Templates
             
             #line default
             #line hidden
-            this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = Enumerable.FirstOrDefault(RepositorySource.Collection" +
-                    ", t => t.");
+            this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = RepositorySource.Collection.FirstOrDefault(t => t.");
             
             #line 110 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
@@ -446,8 +440,7 @@ namespace NRepository.Templates
             
             #line default
             #line hidden
-            this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = Enumerable.FirstOrDefault(RepositorySource.Collection" +
-                    ", t => t.");
+            this.Write(" model)\r\n\t\t{\r\n\t\t\tvar item = RepositorySource.Collection.FirstOrDefault(t => t.");
             
             #line 126 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Params.KeyName));
@@ -480,6 +473,80 @@ namespace NRepository.Templates
             this.Write(";\r\n\t\t}\r\n\t\t");
             
             #line 137 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 139 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsCount) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic int Count()\r\n\t\t{\r\n\t\t\treturn RepositorySource.Collection.Count();\r\n\t\t}\r\n\t" +
+                    "\t");
+            
+            #line 144 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 146 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsCountAsync) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic async System.Threading.Tasks.Task<int> CountAsync()\r\n\t\t{\r\n\t\t\treturn Repo" +
+                    "sitorySource.Collection.Count();\r\n\t\t}\r\n\t\t");
+            
+            #line 151 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 153 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsPagination) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ");
+            
+            #line 154 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write("[] SelectPage(int page, int count)\r\n\t\t{\r\n\t\t\treturn RepositorySource.Collection.Sk" +
+                    "ip(page * count).Take(count).ToArray();\r\n\t\t}\r\n\t\t");
+            
+            #line 158 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 160 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsPaginationAsync) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic async System.Threading.Tasks.Task<");
+            
+            #line 161 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Params.FullNameModel));
+            
+            #line default
+            #line hidden
+            this.Write("[]> SelectPageAsync(int page, int count)\r\n\t\t{\r\n\t\t\treturn RepositorySource.Collect" +
+                    "ion.Skip(page * count).Take(count).ToArray();\r\n\t\t}\r\n\t\t");
+            
+            #line 165 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
  } 
             
             #line default

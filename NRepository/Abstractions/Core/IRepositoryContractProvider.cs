@@ -9,7 +9,7 @@ namespace NRepository.Abstractions.Core
     public interface IRepositoryContractProvider
     {
         /// <summary>
-        /// Generate RepositoryContract 
+        /// Generate RepositoryContract by using interfaces
         /// </summary>
         /// <param name="typeInterfaces"></param>
         /// <returns cref="RepositoryContract">Contract</returns>

@@ -1,14 +1,11 @@
-﻿using NRepository.Abstractions.Core;
-using NRepository.Core;
+﻿using NRepository.Core;
 using NRepository.Factories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NRepository
 {
+    /// <summary>
+    /// Build repositoties with params
+    /// </summary>
     public class RepositoryBuilder
         : IRepositoryBuilder
     {

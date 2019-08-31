@@ -134,5 +134,33 @@ namespace <#=Params.NameSpace#>
 			return model.<#=Params.KeyName#>;
 		}
 		<# } #>
+
+		<# if(Params.Contract.IsCount) { #>
+		public int Count()
+		{
+			return RepositorySource.DbSet.Count();
+		}
+		<# } #>	
+
+		<# if(Params.Contract.IsCountAsync) { #>
+		public async System.Threading.Tasks.Task<int> CountAsync()
+		{
+			return await RepositorySource.DbSet.CountAsync();
+		}
+		<# } #>	
+
+		<# if(Params.Contract.IsPagination) { #>
+		public <#=Params.FullNameModel#>[] SelectPage(int page, int count)
+		{
+			return RepositorySource.DbSet.OrderBy(t => t.<#=Params.KeyName#>).Skip(page * count).Take(count).ToArray();
+		}
+		<# } #>
+
+		<# if(Params.Contract.IsPaginationAsync) { #>
+		public async System.Threading.Tasks.Task<<#=Params.FullNameModel#>[]> SelectPageAsync(int page, int count)
+		{
+			return await RepositorySource.DbSet.OrderBy(t => t.<#=Params.KeyName#>).Skip(page * count).Take(count).ToArrayAsync();
+		}
+		<# } #>
 	}
 }

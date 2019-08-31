@@ -12,6 +12,9 @@ using System.Reflection;
 
 namespace NRepository.Core
 {
+    /// <summary>
+    /// Collection Strategy of the builder repository  
+    /// </summary>
     public class CollectionRepositoryClassBuilder
         : IRepositoryClassBuilder
     {
@@ -29,7 +32,6 @@ namespace NRepository.Core
                 "System.Core"
             };
         }
-
 
         public TRepository CreateRepositoryInstance<TRepository>(object repositorySource)
         {

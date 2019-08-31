@@ -18,8 +18,11 @@ namespace NRepository.DemoCollection
                 .Build<ISongRepository>();
 
             repository.Create(new Song { Id = 0, Name = "Agata Resx - Download my source code" });
+            repository.Create(new Song { Id = 1, Name = "Agata Resx - Comment me" });
+            repository.Create(new Song { Id = 2, Name = "Agata Resx - Star" });
+            repository.Create(new Song { Id = 3, Name = "Agata Resx - Men" });
 
-            var songs = repository.Select();
+            var songs = repository.SelectPage(1, 2);
         }
     }
 }
