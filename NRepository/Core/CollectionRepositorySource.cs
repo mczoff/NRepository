@@ -5,7 +5,11 @@ using System.Collections.ObjectModel;
 
 namespace NRepository.Core
 {
-    public sealed class CollectionRepositorySource<TModel> : IRepositorySource<TModel>
+    /// <summary>
+    /// Collection source for collection source class builders
+    /// </summary>
+    /// <typeparam name="TModel">Model repository</typeparam>
+    public sealed class CollectionRepositorySource<TModel>
     {
         public ICollection<TModel> Collection { get; set; }
 

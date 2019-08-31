@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace NRepository.Models
 {
+    /// <summary>
+    /// Repositories contract
+    /// </summary>
     public class RepositoryContract
     {
         public bool IsSelect { get; set; }

@@ -45,7 +45,6 @@
     <Compile Include="Abstractions\Core\IRepositoryClassBuilder.cs" />
     <Compile Include="Abstractions\Core\IRepositoryContractProvider.cs" />
     <Compile Include="Abstractions\Core\IRepositoryPolicy.cs" />
-    <Compile Include="Abstractions\Core\IRepositorySource.cs" />
     <Compile Include="Abstractions\ICountAsyncRepository.cs" />
     <Compile Include="Abstractions\ICountRepository.cs" />
     <Compile Include="Abstractions\ICreateAsyncRepository.cs" />

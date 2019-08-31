@@ -11,6 +11,9 @@ using System.Threading.Tasks;
 
 namespace NRepository.Factories
 {
+    /// <summary>
+    /// Create TRepository by repository source
+    /// </summary>
     public static class RepositoryFactory
     {
         private static readonly string[] _assemblies = new[] { "NRepository", "NRepository.EntityFramework" };

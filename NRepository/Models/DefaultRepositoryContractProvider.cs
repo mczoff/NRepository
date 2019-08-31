@@ -1,14 +1,13 @@
 ﻿using NRepository.Abstractions.Core;
 using NRepository.Attributes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NRepository.Models
 {
+    /// <summary>
+    /// Alanyze collection repository interfaces and provide repository contract
+    /// </summary>
     public class DefaultRepositoryContractProvider
         : IRepositoryContractProvider
     {
