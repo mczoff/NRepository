@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NRepository.Models
+﻿namespace NRepository.Models
 {
     /// <summary>
     /// Repositories contract
@@ -17,7 +11,11 @@ namespace NRepository.Models
         public bool IsDeleteAsync { get; set; }
         public bool IsCreate { get; set; }
         public bool IsCreateAsync { get; set; }
-        public bool IsUpdate{ get; set; }
+        public bool IsUpdate { get; set; }
         public bool IsUpdateAsync { get; set; }
+        public bool IsCount { get; set; }
+        public bool IsCountAsync { get; set; }
+        public bool IsPagination { get; set; }
+        public bool IsPaginationAsync { get; set; }
     }
 }

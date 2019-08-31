@@ -477,6 +477,36 @@ namespace NRepository.Templates
             
             #line default
             #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 139 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsCount) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic int Count()\r\n\t\t{\r\n\t\t\treturn RepositorySource.Collection.Count();\r\n\t\t}\r\n\t" +
+                    "\t");
+            
+            #line 144 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t");
+            
+            #line 146 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ if(Params.Contract.IsCountAsync) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic async System.Threading.Tasks.Task<int> CountAsync()\r\n\t\t{\r\n\t\t\treturn Repo" +
+                    "sitorySource.Collection.Count();\r\n\t\t}\r\n\t\t");
+            
+            #line 151 "C:\Users\Robert Horvald\Documents\NRepository\NRepository\Templates\CollectionRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
             this.Write("\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }

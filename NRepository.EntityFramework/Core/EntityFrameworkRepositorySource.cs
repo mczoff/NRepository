@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace NRepository.EntityFramework.Core
 {
-    public class EntityFrameworkRepositorySource<TModel> : IRepositorySource<TModel>
+    public class EntityFrameworkRepositorySource<TModel>
         where TModel : class
     {
         public IDbSet<TModel> DbSet { get; set; }

@@ -7,7 +7,12 @@ using System.Threading.Tasks;
 
 namespace NRepository.DemoCollection
 {
-    public interface ISongRepository : ISelectRepository<Song, int>, IDeleteRepository<Song, int>, ICreateRepository<Song, int>, IUpdateRepository<Song, int>
+    public interface ISongRepository 
+        : ISelectRepository<Song, int>, 
+          IDeleteRepository<Song, int>, 
+          ICreateRepository<Song, int>, 
+          IUpdateRepository<Song, int>,
+          ICountAsyncRepository
     {
     }
 }

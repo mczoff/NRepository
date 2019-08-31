@@ -135,5 +135,19 @@ namespace <#=Params.NameSpace#>
 			return model.<#=Params.KeyName#>;
 		}
 		<# } #>
+
+		<# if(Params.Contract.IsCount) { #>
+		public int Count()
+		{
+			return RepositorySource.Collection.Count();
+		}
+		<# } #>
+
+		<# if(Params.Contract.IsCountAsync) { #>
+		public async System.Threading.Tasks.Task<int> CountAsync()
+		{
+			return RepositorySource.Collection.Count();
+		}
+		<# } #>
 	}
 }

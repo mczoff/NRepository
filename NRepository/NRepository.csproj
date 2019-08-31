@@ -51,6 +51,8 @@
     <Compile Include="Abstractions\IDeleteAsyncRepository.cs" />
     <Compile Include="Abstractions\IDeleteRepository.cs" />
     <Compile Include="Abstractions\Core\IRepositoryTemplateParams.cs" />
+    <Compile Include="Abstractions\IPaginationAsyncRepository.cs" />
+    <Compile Include="Abstractions\IPaginationRepository.cs" />
     <Compile Include="Abstractions\ISelectAsyncRepository.cs" />
     <Compile Include="Abstractions\ISelectRepository.cs" />
     <Compile Include="Abstractions\IUpdateAsyncRepository.cs" />

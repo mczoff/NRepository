@@ -389,7 +389,36 @@ namespace NRepository.EntityFramework.Templates
             
             #line default
             #line hidden
-            this.Write("\t}\r\n}");
+            this.Write("\r\n\t\t");
+            
+            #line 138 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ if(Params.Contract.IsCount) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic int Count()\r\n\t\t{\r\n\t\t\treturn RepositorySource.DbSet.Count();\r\n\t\t}\r\n\t\t");
+            
+            #line 143 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\t\r\n\r\n\t\t");
+            
+            #line 145 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ if(Params.Contract.IsCountAsync) { 
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic async System.Threading.Tasks.Task<int> CountAsync()\r\n\t\t{\r\n\t\t\treturn awai" +
+                    "t RepositorySource.DbSet.CountAsync();\r\n\t\t}\r\n\t\t");
+            
+            #line 150 "C:\Users\Robert Horvald\Documents\NRepository\NRepository.EntityFramework\Templates\EntityFrameworkRepositoryTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\t\r\n\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }
         
